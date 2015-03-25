@@ -1,4 +1,7 @@
-﻿using Windows.Foundation.Metadata;
+// Copyright (c) Morten Nielsen. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 
 namespace WindowsStateTriggers
