@@ -25,10 +25,12 @@ namespace WindowsStateTriggers
 		{
 			var obj = (PlatformAdaptiveTrigger)d;
 			var val = (Platform)e.NewValue;
-			if (ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")) //There's probably a better way!
-				obj.SetTriggerValue(val == Platform.Phone);
-			else
-				obj.SetTriggerValue(val == Platform.Windows);
+
+            var qualifiers = Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().QualifierValues;
+            if (qualifiers.ContainsKey("DeviceFamily") && qualifiers["DeviceFamily"] == "Mobile")
+                obj.SetTriggerValue(val == Platform.Phone);
+            else
+                obj.SetTriggerValue(val == Platform.Windows);
 		}
 
 		public enum Platform
