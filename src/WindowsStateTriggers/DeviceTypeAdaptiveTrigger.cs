@@ -20,6 +20,8 @@ namespace WindowsStateTriggers
 				var qualifiers = Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().QualifierValues;
 				if (qualifiers.ContainsKey("DeviceFamily"))
 					deviceFamily = qualifiers["DeviceFamily"];
+				else
+					deviceFamily = "";
 			}
 		}
 
@@ -40,7 +42,7 @@ namespace WindowsStateTriggers
 			if (deviceFamily == "Mobile")
 				obj.SetTriggerValue(val == DeviceType.Phone);
 			else if (deviceFamily == "Desktop")
-                obj.SetTriggerValue(val == DeviceType.Windows);
+				obj.SetTriggerValue(val == DeviceType.Windows);
 			else
 				obj.SetTriggerValue(val == DeviceType.Unknown);
 		}
