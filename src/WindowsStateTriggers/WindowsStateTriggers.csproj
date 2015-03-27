@@ -114,6 +114,7 @@
   <ItemGroup>
     <Compile Include="IsFalseStateTrigger.cs" />
     <Compile Include="IsTrueStateTrigger.cs" />
+    <Compile Include="NetworkConnectionStateTrigger.cs" />
     <Compile Include="OrientationStateTrigger.cs" />
     <Compile Include="IsTypePresentStateTrigger.cs" />
     <Compile Include="DeviceTypeAdaptiveTrigger.cs" />
