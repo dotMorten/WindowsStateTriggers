@@ -31,7 +31,7 @@ namespace WindowsStateTriggers
 
 		public static readonly DependencyProperty DeviceTypeProperty =
 			DependencyProperty.Register("DeviceType", typeof(DeviceType), typeof(DeviceTypeAdaptiveTrigger),
-			new PropertyMetadata(DeviceType.None, OnDeviceTypePropertyChanged));
+			new PropertyMetadata(DeviceType.Unknown, OnDeviceTypePropertyChanged));
 
 		private static void OnDeviceTypePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
@@ -39,13 +39,15 @@ namespace WindowsStateTriggers
 			var val = (DeviceType)e.NewValue;
 			if (deviceFamily == "Mobile")
 				obj.SetTriggerValue(val == DeviceType.Phone);
+			else if (deviceFamily == "Desktop")
+                obj.SetTriggerValue(val == DeviceType.Windows);
 			else
-				obj.SetTriggerValue(val == DeviceType.Windows);
+				obj.SetTriggerValue(val == DeviceType.Unknown);
 		}
 	}
 
 	public enum DeviceType
 	{
-		None = 0, Windows = 1, Phone = 2,
+		Unknown = 0, Windows = 1, Phone = 2,
 	}
 }
