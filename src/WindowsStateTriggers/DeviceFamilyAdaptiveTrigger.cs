@@ -9,11 +9,11 @@ namespace WindowsStateTriggers
 	/// <summary>
 	/// Trigger for switching between Windows and Windows Phone
 	/// </summary>
-	public class DeviceTypeAdaptiveTrigger : StateTriggerBase
+	public class DeviceFamilyAdaptiveTrigger : StateTriggerBase
 	{
 		private static string deviceFamily;
 
-		public DeviceTypeAdaptiveTrigger()
+		public DeviceFamilyAdaptiveTrigger()
 		{
 			if (deviceFamily == null)
 			{
@@ -25,31 +25,31 @@ namespace WindowsStateTriggers
 			}
 		}
 
-		public DeviceType DeviceType
+		public DeviceFamily DeviceFamily
 		{
-			get { return (DeviceType)GetValue(DeviceTypeProperty); }
-			set { SetValue(DeviceTypeProperty, value); }
+			get { return (DeviceFamily)GetValue(DeviceFamilyProperty); }
+			set { SetValue(DeviceFamilyProperty, value); }
 		}
 
-		public static readonly DependencyProperty DeviceTypeProperty =
-			DependencyProperty.Register("DeviceType", typeof(DeviceType), typeof(DeviceTypeAdaptiveTrigger),
-			new PropertyMetadata(DeviceType.Unknown, OnDeviceTypePropertyChanged));
+		public static readonly DependencyProperty DeviceFamilyProperty =
+			DependencyProperty.Register("DeviceFamily", typeof(DeviceFamily), typeof(DeviceFamilyAdaptiveTrigger),
+			new PropertyMetadata(DeviceFamily.Unknown, OnDeviceTypePropertyChanged));
 
 		private static void OnDeviceTypePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			var obj = (DeviceTypeAdaptiveTrigger)d;
-			var val = (DeviceType)e.NewValue;
+			var obj = (DeviceFamilyAdaptiveTrigger)d;
+			var val = (DeviceFamily)e.NewValue;
 			if (deviceFamily == "Mobile")
-				obj.SetTriggerValue(val == DeviceType.Phone);
+				obj.SetTriggerValue(val == DeviceFamily.Mobile);
 			else if (deviceFamily == "Desktop")
-				obj.SetTriggerValue(val == DeviceType.Windows);
+				obj.SetTriggerValue(val == DeviceFamily.Windows);
 			else
-				obj.SetTriggerValue(val == DeviceType.Unknown);
+				obj.SetTriggerValue(val == DeviceFamily.Unknown);
 		}
 	}
 
-	public enum DeviceType
+	public enum DeviceFamily
 	{
-		Unknown = 0, Windows = 1, Phone = 2,
+		Unknown = 0, Windows = 1, Mobile = 2,
 	}
 }
