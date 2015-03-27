@@ -117,7 +117,7 @@
     <Compile Include="NetworkConnectionStateTrigger.cs" />
     <Compile Include="OrientationStateTrigger.cs" />
     <Compile Include="IsTypePresentStateTrigger.cs" />
-    <Compile Include="DeviceTypeAdaptiveTrigger.cs" />
+    <Compile Include="DeviceFamilyAdaptiveTrigger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
