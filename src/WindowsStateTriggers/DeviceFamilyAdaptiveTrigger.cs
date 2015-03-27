@@ -42,7 +42,7 @@ namespace WindowsStateTriggers
 			if (deviceFamily == "Mobile")
 				obj.SetTriggerValue(val == DeviceFamily.Mobile);
 			else if (deviceFamily == "Desktop")
-				obj.SetTriggerValue(val == DeviceFamily.Windows);
+				obj.SetTriggerValue(val == DeviceFamily.Desktop);
 			else
 				obj.SetTriggerValue(val == DeviceFamily.Unknown);
 		}
@@ -50,6 +50,6 @@ namespace WindowsStateTriggers
 
 	public enum DeviceFamily
 	{
-		Unknown = 0, Windows = 1, Mobile = 2,
+		Unknown = 0, Desktop = 1, Mobile = 2,
 	}
 }
