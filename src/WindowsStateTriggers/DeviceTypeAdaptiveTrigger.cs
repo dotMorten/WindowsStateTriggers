@@ -6,11 +6,23 @@ using Windows.UI.Xaml;
 
 namespace WindowsStateTriggers
 {
-    /// <summary>
-    /// Trigger for switching between Windows and Windows Phone
-    /// </summary>
-    public class DeviceTypeAdaptiveTrigger : StateTriggerBase
+	/// <summary>
+	/// Trigger for switching between Windows and Windows Phone
+	/// </summary>
+	public class DeviceTypeAdaptiveTrigger : StateTriggerBase
 	{
+		private static string deviceFamily;
+
+		public DeviceTypeAdaptiveTrigger()
+		{
+			if (deviceFamily == null)
+			{
+				var qualifiers = Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().QualifierValues;
+				if (qualifiers.ContainsKey("DeviceFamily"))
+					deviceFamily = qualifiers["DeviceFamily"];
+			}
+		}
+
 		public DeviceType DeviceType
 		{
 			get { return (DeviceType)GetValue(DeviceTypeProperty); }
@@ -18,22 +30,22 @@ namespace WindowsStateTriggers
 		}
 
 		public static readonly DependencyProperty DeviceTypeProperty =
-			DependencyProperty.Register("DeviceType", typeof(DeviceType), typeof(DeviceTypeAdaptiveTrigger), 
+			DependencyProperty.Register("DeviceType", typeof(DeviceType), typeof(DeviceTypeAdaptiveTrigger),
 			new PropertyMetadata(DeviceType.None, OnDeviceTypePropertyChanged));
 
 		private static void OnDeviceTypePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			var obj = (DeviceTypeAdaptiveTrigger)d;
 			var val = (DeviceType)e.NewValue;
-			if (ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")) //There's probably a better way!
+			if (deviceFamily == "Mobile")
 				obj.SetTriggerValue(val == DeviceType.Phone);
 			else
 				obj.SetTriggerValue(val == DeviceType.Windows);
 		}
 	}
 
-    public enum DeviceType
-    {
-        None = 0, Windows = 1, Phone = 2,
-    }
+	public enum DeviceType
+	{
+		None = 0, Windows = 1, Phone = 2,
+	}
 }
