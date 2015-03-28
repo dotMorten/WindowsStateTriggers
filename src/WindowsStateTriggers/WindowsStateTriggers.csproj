@@ -113,8 +113,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IsFalseStateTrigger.cs" />
+    <Compile Include="IsNotNullTrigger.cs" />
     <Compile Include="IsTrueStateTrigger.cs" />
     <Compile Include="NetworkConnectionStateTrigger.cs" />
+    <Compile Include="IsNullTrigger.cs" />
     <Compile Include="OrientationStateTrigger.cs" />
     <Compile Include="IsTypePresentStateTrigger.cs" />
     <Compile Include="DeviceFamilyAdaptiveTrigger.cs" />
