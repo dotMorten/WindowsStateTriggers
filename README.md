@@ -15,3 +15,5 @@ http://www.sharpgis.net/post/2015/03/24/Using-Custom-Visual-State-Triggers
 - `EqualsStateTrigger`: Trigger if `Value` is equal to `EqualTo`
 - `NotEqualStateTrigger`: Trigger if `Value` is not equal to `NotEqualTo`
 - `CompareStateTrigger`: Trigger if `Value` is equal, less than or greater than `CompareTo`
+
+Run the test app to see a set of examples of these in use.
