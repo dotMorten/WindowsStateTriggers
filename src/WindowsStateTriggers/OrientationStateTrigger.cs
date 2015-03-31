@@ -19,9 +19,12 @@ namespace WindowsStateTriggers
 	{
 		public OrientationStateTrigger()
 		{
-			//TODO: Make this a weak event reference!
-			DisplayInformation.GetForCurrentView().OrientationChanged += 
-                OrientationStateTrigger_OrientationChanged;
+			if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+			{
+				//TODO: Make this a weak event reference!
+				DisplayInformation.GetForCurrentView().OrientationChanged +=
+					OrientationStateTrigger_OrientationChanged;
+			}
 		}
 
 		private void OrientationStateTrigger_OrientationChanged(DisplayInformation sender, object args)
@@ -60,8 +63,11 @@ namespace WindowsStateTriggers
 		private static void OnOrientationPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			var obj = (OrientationStateTrigger)d;
-			var orientation = DisplayInformation.GetForCurrentView().CurrentOrientation;
-            obj.UpdateTrigger(orientation);
+			if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+			{
+				var orientation = DisplayInformation.GetForCurrentView().CurrentOrientation;
+				obj.UpdateTrigger(orientation);
+			}
         }
 
 		public enum Orientations 
