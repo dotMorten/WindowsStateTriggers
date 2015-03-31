@@ -17,3 +17,6 @@ http://www.sharpgis.net/post/2015/03/24/Using-Custom-Visual-State-Triggers
 - `CompareStateTrigger`: Trigger if `Value` is equal, less than or greater than `CompareTo`
 
 Run the test app to see a set of examples of these in use.
+
+
+![st](https://cloud.githubusercontent.com/assets/1378165/6913751/a1573d92-d738-11e4-9c29-0e08d1762405.PNG)
