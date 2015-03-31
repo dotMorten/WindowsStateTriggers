@@ -14,30 +14,7 @@ namespace WindowsStateTriggers
 	{
 		private void UpdateTrigger()
 		{
-			if (Value == EqualTo)
-			{
-				SetTriggerValue(true);
-				return;
-			}
-			if(Value != null && EqualTo != null)
-			{
-				if(Value.GetType() != EqualTo.GetType()) //Let's see if we can convert
-				{
-					var t2 = System.Convert.ChangeType(Value, EqualTo.GetType(), CultureInfo.InvariantCulture);
-					if (EqualTo.Equals(t2))
-					{
-						SetTriggerValue(true);
-						return;
-					}
-					t2 = System.Convert.ChangeType(EqualTo, Value.GetType(), CultureInfo.InvariantCulture);
-					if (Value.Equals(t2))
-					{
-						SetTriggerValue(true);
-						return;
-					}
-				}
-			}
-			SetTriggerValue(false);
+			SetTriggerValue(EqualsStateTrigger.AreValuesEqual(Value, EqualTo, true));
 		}
 
 		public object Value
@@ -62,8 +39,38 @@ namespace WindowsStateTriggers
 			set { SetValue(EqualToProperty, value); }
 		}
 
+		/// <summary>
+		/// Identified the <see cref="EqualTo"/> DependencyProperty
+		/// </summary>
 		public static readonly DependencyProperty EqualToProperty =
 					DependencyProperty.Register("EqualTo", typeof(object), typeof(EqualsStateTrigger), new PropertyMetadata(null, OnValuePropertyChanged));
 
+
+		internal static bool AreValuesEqual(object value1, object value2, bool convertType)
+		{
+			if (value1 == value2)
+			{
+				return true;
+			}
+			if (value1 != null && value2 != null)
+			{
+				//Let's see if we can convert - for perf reasons though, try and use the right type in and out
+				if (value1.GetType() != value2.GetType() && convertType)
+				{
+					var t2 = System.Convert.ChangeType(value1, value2.GetType(), CultureInfo.InvariantCulture);
+					if (value2.Equals(t2))
+					{
+						return true;
+					}
+					//try the other way around
+					t2 = System.Convert.ChangeType(value2, value1.GetType(), CultureInfo.InvariantCulture);
+					if (value1.Equals(t2))
+					{
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 	}
 }

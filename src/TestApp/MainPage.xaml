@@ -35,6 +35,11 @@
 				<local:SampleContainer Title="EqualsStateTrigger">
 					<samples:EqualsSample />
 				</local:SampleContainer>
+
+				<local:SampleContainer Title="NotEqualStateTrigger">
+					<samples:NotEqualSample />
+				</local:SampleContainer>
+				
 			</VariableSizedWrapGrid>
 		</ScrollViewer>
 	</Grid>

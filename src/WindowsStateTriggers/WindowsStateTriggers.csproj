@@ -112,6 +112,7 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotEqualStateTrigger.cs" />
     <Compile Include="IsFalseStateTrigger.cs" />
     <Compile Include="EqualsStateTrigger.cs" />
     <Compile Include="IsTrueStateTrigger.cs" />
