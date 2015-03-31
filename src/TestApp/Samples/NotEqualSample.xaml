@@ -39,7 +39,7 @@
 			<TextBlock x:Name="checkStatus" Opacity=".25" Text="Checkbox value is indeterminate" HorizontalAlignment="Center"  />
 			<CheckBox HorizontalAlignment="Left" Content="Check me" x:Name="checkbox" IsChecked="True" IsThreeState="True" />
 			<Slider x:Name="slider" Minimum="0" Maximum="5" />
-			<TextBlock x:Name="sliderStatus" Text="Slider is value is 0" />
+			<TextBlock x:Name="sliderStatus" Text="Slider value is 0" />
 		</StackPanel>
 
 	</Grid>

@@ -32,10 +32,11 @@
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
 
-		<TextBlock x:Name="orientationStatus" 
-                   
+		<StackPanel>
+			<TextBlock x:Name="orientationStatus" 
                    HorizontalAlignment="Center" 
 				   VerticalAlignment="Center" />
-
+			<TextBlock Text="WinRT Bug?" Foreground="Red" FontSize="8" />
+		</StackPanel>
 	</Grid>
 </UserControl>

@@ -10,7 +10,7 @@
 	<Grid Background="DimGray">
 
 		<ScrollViewer HorizontalScrollMode="Disabled" ZoomMode="Disabled">
-			<VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="350" >
+			<VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="350" Margin="5" >
 			
 				<local:SampleContainer Title="DeviceFamilyAdaptiveTrigger">
 					<samples:DeviceFamilySample />
@@ -39,7 +39,12 @@
 				<local:SampleContainer Title="NotEqualStateTrigger">
 					<samples:NotEqualSample />
 				</local:SampleContainer>
+
+				<local:SampleContainer Title="CompareStateTrigger">
+					<samples:CompareSample />
+				</local:SampleContainer>
 				
+
 			</VariableSizedWrapGrid>
 		</ScrollViewer>
 	</Grid>

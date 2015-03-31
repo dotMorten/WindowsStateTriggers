@@ -8,7 +8,7 @@
 		<Setter Property="BorderBrush" Value="Black" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="20" />
-		<Setter Property="Margin" Value="10" />
+		<Setter Property="Margin" Value="5" />
 		<Setter Property="MinWidth" Value="100" />
 		<Setter Property="MinHeight" Value="200" />
 		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
