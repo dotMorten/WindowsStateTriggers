@@ -14,10 +14,13 @@ using Windows.UI.Xaml;
 namespace WindowsStateTriggers
 {
     /// <summary>
-    /// Trigger for switching when the screen orientation changes
+    /// Trigger for switching when the network availability changes
     /// </summary>
 	public class NetworkConnectionStateTrigger : StateTriggerBase
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NetworkConnectionStateTrigger"/> class.
+		/// </summary>
 		public NetworkConnectionStateTrigger()
 		{
 			//TODO: Make this a weak event reference!
@@ -41,12 +44,18 @@ namespace WindowsStateTriggers
 				!isConnected && ConnectionState == ConnectionState.Disconnected);
 		}
 
-        public ConnectionState ConnectionState
+		/// <summary>
+		/// Gets or sets the state of the connection to trigger on.
+		/// </summary>
+		public ConnectionState ConnectionState
 		{
 			get { return (ConnectionState)GetValue(ConnectionStateProperty); }
 			set { SetValue(ConnectionStateProperty, value); }
 		}
 
+		/// <summary>
+		/// Identifies the <see cref="ConnectionState"/> DependencyProperty
+		/// </summary>
 		public static readonly DependencyProperty ConnectionStateProperty =
 			DependencyProperty.Register("ConnectionState", typeof(ConnectionState), typeof(NetworkConnectionStateTrigger), 
 			new PropertyMetadata(ConnectionState.Connected, OnConnectionStatePropertyChanged));
@@ -58,9 +67,18 @@ namespace WindowsStateTriggers
         }
 	}
 
+	/// <summary>
+	/// ConnectionStates
+	/// </summary>
 	public enum ConnectionState
 	{
+		/// <summary>
+		/// Connected
+		/// </summary>
 		Connected,
+		/// <summary>
+		/// Disconnected
+		/// </summary>
 		Disconnected,
 	}
 }

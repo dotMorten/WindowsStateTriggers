@@ -8,25 +8,31 @@ using Windows.UI.Xaml;
 
 namespace WindowsStateTriggers
 {
-    /// <summary>
-    /// Enables a state if the value is equal to another value
-    /// </summary>
-    public class CompareStateTrigger : StateTriggerBase
+	/// <summary>
+	/// Enables a state if the value is equal to another value
+	/// </summary>
+	public class CompareStateTrigger : StateTriggerBase
 	{
 		private void UpdateTrigger()
 		{
 			var result = CompareValues() == Comparison;
-            SetTriggerValue(result);
+			SetTriggerValue(result);
 		}
 
+		/// <summary>
+		/// Gets or sets the value for comparison.
+		/// </summary>
 		public object Value
 		{
 			get { return (object)GetValue(ValueProperty); }
 			set { SetValue(ValueProperty, value); }
 		}
 
+		/// <summary>
+		/// Identifies the <see cref="Value"/> DependencyProperty
+		/// </summary>
 		public static readonly DependencyProperty ValueProperty =
-			DependencyProperty.Register("Value", typeof(object), typeof(CompareStateTrigger), 
+			DependencyProperty.Register("Value", typeof(object), typeof(CompareStateTrigger),
 			new PropertyMetadata(null, OnValuePropertyChanged));
 
 		private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -35,6 +41,9 @@ namespace WindowsStateTriggers
 			obj.UpdateTrigger();
 		}
 
+		/// <summary>
+		/// Gets or sets the value to compare to.
+		/// </summary>
 		public object CompareTo
 		{
 			get { return (object)GetValue(CompareToProperty); }
@@ -46,7 +55,10 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public static readonly DependencyProperty CompareToProperty =
 					DependencyProperty.Register("CompareTo", typeof(object), typeof(CompareStateTrigger), new PropertyMetadata(null, OnValuePropertyChanged));
-		
+
+		/// <summary>
+		/// Gets or sets the comparison type
+		/// </summary>
 		public Comparison Comparison
 		{
 			get { return (Comparison)GetValue(ComparisonProperty); }
@@ -58,14 +70,14 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public static readonly DependencyProperty ComparisonProperty =
 			DependencyProperty.Register("Comparison", typeof(Comparison), typeof(CompareStateTrigger), new PropertyMetadata(Comparison.Equal, OnValuePropertyChanged));
-		
+
 		internal Comparison CompareValues()
 		{
 			var v1 = Value;
 			var v2 = CompareTo;
 			if (v1 == v2)
 			{
-				if(Comparison == Comparison.Equal)
+				if (Comparison == Comparison.Equal)
 					return Comparison.Equal;
 			}
 			if (v1 != null && v2 != null)
@@ -92,16 +104,31 @@ namespace WindowsStateTriggers
 						else if (result == 0) return Comparison.Equal;
 						else return Comparison.GreaterThan;
 					}
-                }
+				}
 			}
 			return Comparison.NotComparable;
 		}
 	}
+	/// <summary>
+	/// Comparison types
+	/// </summary>
 	public enum Comparison
-		{
-			NotComparable,
-			Equal,
-			LessThan,
-			GreaterThan
-		}
+	{
+		/// <summary>
+		/// Not comparable
+		/// </summary>
+		NotComparable,
+		/// <summary>
+		/// Equals
+		/// </summary>
+		Equal,
+		/// <summary>
+		/// Less than
+		/// </summary>
+		LessThan,
+		/// <summary>
+		/// Greater than
+		/// </summary>
+		GreaterThan
+	}
 }

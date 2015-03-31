@@ -6,20 +6,29 @@ using Windows.UI.Xaml;
 
 namespace WindowsStateTriggers
 {
-    /// <summary>
-    /// Enables a state if a type is present on the device
-    /// </summary>
-    /// <remarks>
-    ///     <triggers:IsTypePresentTrigger TypeName="Windows.Phone.UI.Input.HardwareButtons" />
-    /// </remarks>
-    public class IsTypePresentStateTrigger : StateTriggerBase
+	/// <summary>
+	/// Enables a state if a type is present on the device
+	/// </summary>
+	/// <remarks>
+	///     &lt;triggers:IsTypePresentTrigger TypeName="Windows.Phone.UI.Input.HardwareButtons" />
+	/// </remarks>
+	public class IsTypePresentStateTrigger : StateTriggerBase
 	{
+		/// <summary>
+		/// Gets or sets the name of the type.
+		/// </summary>
+		/// <remarks>
+		/// Example: Windows.Phone.UI.Input.HardwareButtons
+		/// </remarks>
 		public string TypeName
 		{
 			get { return (string)GetValue(TypeNameProperty); }
 			set { SetValue(TypeNameProperty, value); }
 		}
 
+		/// <summary>
+		/// Identifies the <see cref="TypeName"/> DependencyProperty
+		/// </summary>
 		public static readonly DependencyProperty TypeNameProperty =
 			DependencyProperty.Register("TypeName", typeof(string), typeof(IsTypePresentStateTrigger), 
 			new PropertyMetadata("", OnTypeNamePropertyChanged));

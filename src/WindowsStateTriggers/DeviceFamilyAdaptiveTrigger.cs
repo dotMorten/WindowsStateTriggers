@@ -13,6 +13,9 @@ namespace WindowsStateTriggers
 	{
 		private static string deviceFamily;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="DeviceFamilyAdaptiveTrigger"/> class.
+		/// </summary>
 		public DeviceFamilyAdaptiveTrigger()
 		{
 			if (deviceFamily == null)
@@ -25,12 +28,19 @@ namespace WindowsStateTriggers
 			}
 		}
 
+		/// <summary>
+		/// Gets or sets the device family to trigger on.
+		/// </summary>
+		/// <value>The device family.</value>
 		public DeviceFamily DeviceFamily
 		{
 			get { return (DeviceFamily)GetValue(DeviceFamilyProperty); }
 			set { SetValue(DeviceFamilyProperty, value); }
 		}
 
+		/// <summary>
+		/// Identifies the <see cref="DeviceFamily"/> DependencyProperty
+		/// </summary>
 		public static readonly DependencyProperty DeviceFamilyProperty =
 			DependencyProperty.Register("DeviceFamily", typeof(DeviceFamily), typeof(DeviceFamilyAdaptiveTrigger),
 			new PropertyMetadata(DeviceFamily.Unknown, OnDeviceTypePropertyChanged));
@@ -48,8 +58,22 @@ namespace WindowsStateTriggers
 		}
 	}
 
+	/// <summary>
+	/// Device Families
+	/// </summary>
 	public enum DeviceFamily
 	{
-		Unknown = 0, Desktop = 1, Mobile = 2,
+		/// <summary>
+		/// Unknown
+		/// </summary>
+		Unknown = 0,
+		/// <summary>
+		/// Desktop
+		/// </summary>
+		Desktop = 1,
+		/// <summary>
+		/// Mobile
+		/// </summary>
+		Mobile = 2,
 	}
 }

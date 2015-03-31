@@ -12,12 +12,18 @@ namespace WindowsStateTriggers
     /// </summary>
     public class IsTrueStateTrigger : StateTriggerBase
 	{
+		/// <summary>
+		/// Gets or sets the value used to check for <c>true</c>.
+		/// </summary>
 		public bool Value
 		{
 			get { return (bool)GetValue(ValueProperty); }
 			set { SetValue(ValueProperty, value); }
 		}
 
+		/// <summary>
+		/// Identifies the <see cref="Value"/> DependencyProperty
+		/// </summary>
 		public static readonly DependencyProperty ValueProperty =
 			DependencyProperty.Register("Value", typeof(bool), typeof(IsTrueStateTrigger), 
 			new PropertyMetadata(false, OnValuePropertyChanged));

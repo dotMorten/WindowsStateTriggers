@@ -17,12 +17,18 @@ namespace WindowsStateTriggers
 			SetTriggerValue(EqualsStateTrigger.AreValuesEqual(Value, EqualTo, true));
 		}
 
+		/// <summary>
+		/// Gets or sets the value for comparison.
+		/// </summary>
 		public object Value
 		{
 			get { return (object)GetValue(ValueProperty); }
 			set { SetValue(ValueProperty, value); }
 		}
 
+		/// <summary>
+		/// Identifies the <see cref="Value"/> DependencyProperty
+		/// </summary>
 		public static readonly DependencyProperty ValueProperty =
 			DependencyProperty.Register("Value", typeof(object), typeof(EqualsStateTrigger), 
 			new PropertyMetadata(null, OnValuePropertyChanged));
@@ -33,6 +39,9 @@ namespace WindowsStateTriggers
 			obj.UpdateTrigger();
 		}
 
+		/// <summary>
+		/// Gets or sets the value to compare equality to.
+		/// </summary>
 		public object EqualTo
 		{
 			get { return (object)GetValue(EqualToProperty); }
@@ -40,7 +49,7 @@ namespace WindowsStateTriggers
 		}
 
 		/// <summary>
-		/// Identified the <see cref="EqualTo"/> DependencyProperty
+		/// Identifies the <see cref="EqualTo"/> DependencyProperty
 		/// </summary>
 		public static readonly DependencyProperty EqualToProperty =
 					DependencyProperty.Register("EqualTo", typeof(object), typeof(EqualsStateTrigger), new PropertyMetadata(null, OnValuePropertyChanged));

@@ -17,6 +17,9 @@ namespace WindowsStateTriggers
     /// </summary>
 	public class OrientationStateTrigger : StateTriggerBase
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="OrientationStateTrigger"/> class.
+		/// </summary>
 		public OrientationStateTrigger()
 		{
 			if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
@@ -50,12 +53,18 @@ namespace WindowsStateTriggers
             }
         }
 
-        public Orientations Orientation
+		/// <summary>
+		/// Gets or sets the orientation to trigger on.
+		/// </summary>
+		public Orientations Orientation
 		{
 			get { return (Orientations)GetValue(OrientationProperty); }
 			set { SetValue(OrientationProperty, value); }
 		}
 
+		/// <summary>
+		/// Identifies the <see cref="Orientation"/> parameter.
+		/// </summary>
 		public static readonly DependencyProperty OrientationProperty =
 			DependencyProperty.Register("Orientation", typeof(Orientations), typeof(OrientationStateTrigger), 
 			new PropertyMetadata(Orientations.None, OnOrientationPropertyChanged));
@@ -70,11 +79,23 @@ namespace WindowsStateTriggers
 			}
         }
 
+		/// <summary>
+		/// Orientations
+		/// </summary>
 		public enum Orientations 
 		{
+			/// <summary>
+			/// none
+			/// </summary>
 			None,
+			/// <summary>
+			/// landscape
+			/// </summary>
 			Landscape,
-			Portrait 
+			/// <summary>
+			/// portrait
+			/// </summary>
+			Portrait
 		}
 	}
 }

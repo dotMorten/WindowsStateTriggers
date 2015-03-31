@@ -8,7 +8,7 @@ using Windows.UI.Xaml;
 namespace WindowsStateTriggers
 {
     /// <summary>
-    /// Enables a state if the value is equal to another value
+    /// Enables a state if the value is not equal to another value
     /// </summary>
     public class NotEqualStateTrigger : StateTriggerBase
 	{
@@ -17,12 +17,18 @@ namespace WindowsStateTriggers
 			SetTriggerValue(!EqualsStateTrigger.AreValuesEqual(Value, NotEqualTo, true));
 		}
 
+		/// <summary>
+		/// Gets or sets the value for comparison.
+		/// </summary>
 		public object Value
 		{
 			get { return (object)GetValue(ValueProperty); }
 			set { SetValue(ValueProperty, value); }
 		}
 
+		/// <summary>
+		/// Identifies the <see cref="Value"/> DependencyProperty
+		/// </summary>
 		public static readonly DependencyProperty ValueProperty =
 			DependencyProperty.Register("Value", typeof(object), typeof(NotEqualStateTrigger), 
 			new PropertyMetadata(null, OnValuePropertyChanged));
@@ -33,6 +39,9 @@ namespace WindowsStateTriggers
 			obj.UpdateTrigger();
 		}
 
+		/// <summary>
+		/// Gets or sets the value to compare inequality to.
+		/// </summary>
 		public object NotEqualTo
 		{
 			get { return (object)GetValue(NotEqualToProperty); }
@@ -40,7 +49,7 @@ namespace WindowsStateTriggers
 		}
 
 		/// <summary>
-		/// Identified the <see cref="NotEqualTo"/> DependencyProperty
+		/// Identifies the <see cref="NotEqualTo"/> DependencyProperty
 		/// </summary>
 		public static readonly DependencyProperty NotEqualToProperty =
 					DependencyProperty.Register("NotEqualTo", typeof(object), typeof(NotEqualStateTrigger), new PropertyMetadata(null, OnValuePropertyChanged));
