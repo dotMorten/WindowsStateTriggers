@@ -31,6 +31,10 @@
 				<local:SampleContainer Title="IsTypePresentStateTrigger">
 					<samples:IsTypePresentSample />
 				</local:SampleContainer>
+
+				<local:SampleContainer Title="EqualsStateTrigger">
+					<samples:EqualsSample />
+				</local:SampleContainer>
 			</VariableSizedWrapGrid>
 		</ScrollViewer>
 	</Grid>
