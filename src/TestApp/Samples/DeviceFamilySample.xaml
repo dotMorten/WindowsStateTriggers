@@ -1,0 +1,40 @@
+﻿<UserControl
+    x:Class="TestApp.Samples.DeviceFamilySample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestApp.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:WindowsStateTriggers"
+	mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+		<VisualStateManager.VisualStateGroups>
+
+			<VisualStateGroup >
+				<VisualState x:Name="desktop">
+					<VisualState.StateTriggers>
+						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Desktop" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="greeting.Text" Value="Hello Windows Desktop!" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="phone">
+					<VisualState.StateTriggers>
+						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Mobile" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="greeting.Text" Value="Hello Windows Phone!" />
+					</VisualState.Setters>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
+		
+		<TextBlock x:Name="greeting" Foreground="Black"
+                   Text="Unknown Platform"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+	</Grid>
+</UserControl>
