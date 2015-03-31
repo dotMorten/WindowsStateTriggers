@@ -10,7 +10,12 @@ namespace WindowsStateTriggers
 	/// Enables a state if a type is present on the device
 	/// </summary>
 	/// <remarks>
+	/// <para>
+	/// Example: Checking for hardware back button availability:
+	/// <code lang="xaml">
 	///     &lt;triggers:IsTypePresentTrigger TypeName="Windows.Phone.UI.Input.HardwareButtons" />
+	/// </code>
+	/// </para>
 	/// </remarks>
 	public class IsTypePresentStateTrigger : StateTriggerBase
 	{
@@ -18,7 +23,7 @@ namespace WindowsStateTriggers
 		/// Gets or sets the name of the type.
 		/// </summary>
 		/// <remarks>
-		/// Example: Windows.Phone.UI.Input.HardwareButtons
+		/// Example: <c>Windows.Phone.UI.Input.HardwareButtons</c>
 		/// </remarks>
 		public string TypeName
 		{

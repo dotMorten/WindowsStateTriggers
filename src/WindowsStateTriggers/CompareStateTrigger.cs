@@ -11,6 +11,14 @@ namespace WindowsStateTriggers
 	/// <summary>
 	/// Enables a state if the value is equal to another value
 	/// </summary>
+	/// <remarks>
+	/// <para>
+	/// Example: Trigger if a value is greater than 0
+	/// <code lang="xaml">
+	///     &lt;triggers:CompareStateTrigger Value="{Binding MyValue}" CompareTo="0" Comparison="GreaterThan" />
+	/// </code>
+	/// </para>
+	/// </remarks>
 	public class CompareStateTrigger : StateTriggerBase
 	{
 		private void UpdateTrigger()
