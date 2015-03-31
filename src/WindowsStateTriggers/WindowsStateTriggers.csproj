@@ -118,6 +118,7 @@
     <Compile Include="NotEqualStateTrigger.cs" />
     <Compile Include="IsFalseStateTrigger.cs" />
     <Compile Include="EqualsStateTrigger.cs" />
+    <Compile Include="GreaterThanStateTrigger.cs" />
     <Compile Include="IsTrueStateTrigger.cs" />
     <Compile Include="NetworkConnectionStateTrigger.cs" />
     <Compile Include="OrientationStateTrigger.cs" />
