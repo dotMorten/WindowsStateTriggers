@@ -9,7 +9,7 @@ using Windows.UI.Xaml;
 namespace WindowsStateTriggers
 {
 	/// <summary>
-	/// Enables a state if the value is equal to another value
+	/// Enables a state if the value is equal to, greater than, or less than another value
 	/// </summary>
 	/// <remarks>
 	/// <para>
