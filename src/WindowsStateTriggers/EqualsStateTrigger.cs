@@ -22,7 +22,7 @@ namespace WindowsStateTriggers
 	{
 		private void UpdateTrigger()
 		{
-			SetTriggerValue(EqualsStateTrigger.AreValuesEqual(Value, EqualTo, true));
+			SetActive(EqualsStateTrigger.AreValuesEqual(Value, EqualTo, true));
 		}
 
 		/// <summary>

@@ -31,7 +31,7 @@ namespace WindowsStateTriggers
 		{
 			var obj = (IsFalseStateTrigger)d;
 			var val = (bool)e.NewValue;
-			obj.SetTriggerValue(!val);
+			obj.SetActive(!val);
 		}
 	}
 }

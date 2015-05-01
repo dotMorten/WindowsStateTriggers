@@ -14,7 +14,7 @@ namespace WindowsStateTriggers
 	{
 		private void UpdateTrigger()
 		{
-			SetTriggerValue(!EqualsStateTrigger.AreValuesEqual(Value, NotEqualTo, true));
+			SetActive(!EqualsStateTrigger.AreValuesEqual(Value, NotEqualTo, true));
 		}
 
 		/// <summary>

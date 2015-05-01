@@ -42,7 +42,7 @@ namespace WindowsStateTriggers
 		{
 			var obj = (IsTypePresentStateTrigger)d;
 			var val = (string)e.NewValue;
-			obj.SetTriggerValue(!string.IsNullOrWhiteSpace(val) && ApiInformation.IsTypePresent(val));
+			obj.SetActive(!string.IsNullOrWhiteSpace(val) && ApiInformation.IsTypePresent(val));
 		}
 	}
 }

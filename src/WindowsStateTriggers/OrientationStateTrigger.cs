@@ -39,17 +39,17 @@ namespace WindowsStateTriggers
         {
             if (orientation == Windows.Graphics.Display.DisplayOrientations.None)
             {
-                SetTriggerValue(false);
+                SetActive(false);
             }
             else if (orientation == Windows.Graphics.Display.DisplayOrientations.Landscape ||
                orientation == Windows.Graphics.Display.DisplayOrientations.LandscapeFlipped)
             {
-                SetTriggerValue(Orientation == Orientations.Landscape);
+                SetActive(Orientation == Orientations.Landscape);
             }
             else if (orientation == Windows.Graphics.Display.DisplayOrientations.Portrait ||
                     orientation == Windows.Graphics.Display.DisplayOrientations.PortraitFlipped)
             {
-                SetTriggerValue(Orientation == Orientations.Portrait);
+                SetActive(Orientation == Orientations.Portrait);
             }
         }
 

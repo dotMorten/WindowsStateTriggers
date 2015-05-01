@@ -32,7 +32,7 @@ namespace WindowsStateTriggers
 		{
 			var obj = (IsTrueStateTrigger)d;
 			var val = (bool)e.NewValue;
-			obj.SetTriggerValue(val);
+			obj.SetActive(val);
 		}
 
 		internal void UpdateTrigger(bool val)

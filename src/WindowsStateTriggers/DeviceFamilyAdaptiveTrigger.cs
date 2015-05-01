@@ -50,11 +50,11 @@ namespace WindowsStateTriggers
 			var obj = (DeviceFamilyAdaptiveTrigger)d;
 			var val = (DeviceFamily)e.NewValue;
 			if (deviceFamily == "Mobile")
-				obj.SetTriggerValue(val == DeviceFamily.Mobile);
+				obj.SetActive(val == DeviceFamily.Mobile);
 			else if (deviceFamily == "Desktop")
-				obj.SetTriggerValue(val == DeviceFamily.Desktop);
+				obj.SetActive(val == DeviceFamily.Desktop);
 			else
-				obj.SetTriggerValue(val == DeviceFamily.Unknown);
+				obj.SetActive(val == DeviceFamily.Unknown);
 		}
 	}
 

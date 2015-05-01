@@ -24,7 +24,7 @@ namespace WindowsStateTriggers
 		private void UpdateTrigger()
 		{
 			var result = CompareValues() == Comparison;
-			SetTriggerValue(result);
+			SetActive(result);
 		}
 
 		/// <summary>

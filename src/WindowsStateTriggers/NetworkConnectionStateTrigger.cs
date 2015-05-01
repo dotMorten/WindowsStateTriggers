@@ -39,7 +39,7 @@ namespace WindowsStateTriggers
 			var profile = NetworkInformation.GetInternetConnectionProfile();
 			if(profile != null)
 				isConnected = profile.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
-			SetTriggerValue(
+			SetActive(
 				 isConnected && ConnectionState == ConnectionState.Connected ||
 				!isConnected && ConnectionState == ConnectionState.Disconnected);
 		}
