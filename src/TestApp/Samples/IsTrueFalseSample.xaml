@@ -15,7 +15,7 @@
 			<VisualStateGroup >
 				<VisualState x:Name="checkstate">
 					<VisualState.StateTriggers>
-						<triggers:IsTrueStateTrigger Value="{Binding IsChecked, ElementName=checkbox}"/>
+						<StateTrigger IsActive="{Binding IsChecked, ElementName=checkbox}"/>
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="checkStatus.Opacity" Value="1" />
