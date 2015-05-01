@@ -97,6 +97,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Samples\PointerDeviceTypeSample.xaml.cs">
+      <DependentUpon>PointerDeviceTypeSample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\CompareSample.xaml.cs">
       <DependentUpon>CompareSample.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\PointerDeviceTypeSample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -43,7 +43,10 @@
 				<local:SampleContainer Title="CompareStateTrigger">
 					<samples:CompareSample />
 				</local:SampleContainer>
-				
+
+				<local:SampleContainer Title="InputTypeTrigger">
+					<samples:PointerDeviceTypeSample />
+				</local:SampleContainer>
 
 			</VariableSizedWrapGrid>
 		</ScrollViewer>
