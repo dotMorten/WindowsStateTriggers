@@ -9,7 +9,7 @@ http://www.sharpgis.net/post/2015/03/24/Using-Custom-Visual-State-Triggers
 - `DeviceFamilyAdaptiveTrigger`: Trigger based on the device family (Desktop or Phone)
 - `NetworkConnectionStateTrigger`: Trigger if internet connection is available or not
 - `OrientationStateTrigger`: Trigger based on portrait/landscape mode
-- `IsTrueStateTrigger`: Trigger if a value is true
+- `IsTrueStateTrigger`: Trigger if a value is true - REMOVED ! use `StateTrigger` and bind to `IsActive`
 - `IsFalseStateTrigger`: Trigger if a value is false
 - `IsTypePresentStateTrigger`: Trigger if a type is present (ie hardware backbutton etc)
 - `EqualsStateTrigger`: Trigger if `Value` is equal to `EqualTo`
