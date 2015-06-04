@@ -23,8 +23,13 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public NetworkConnectionStateTrigger()
 		{
-			//TODO: Make this a weak event reference!
-			NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
+			var weakEvent =
+				new WeakEventListener<NetworkConnectionStateTrigger, object>(this)
+				{
+					OnEventAction = (instance, source) => NetworkInformation_NetworkStatusChanged(source),
+					OnDetachAction = (instance, weakEventListener) => NetworkInformation.NetworkStatusChanged -= weakEventListener.OnEvent
+				};
+			NetworkInformation.NetworkStatusChanged += weakEvent.OnEvent;
 			UpdateState();
 		}
 

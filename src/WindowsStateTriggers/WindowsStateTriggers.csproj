@@ -52,6 +52,7 @@
     <Compile Include="IsTypePresentStateTrigger.cs" />
     <Compile Include="DeviceFamilyAdaptiveTrigger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeakEventListener.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
