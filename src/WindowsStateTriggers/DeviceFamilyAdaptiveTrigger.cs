@@ -13,19 +13,16 @@ namespace WindowsStateTriggers
 	{
 		private static string deviceFamily;
 
+		static DeviceFamilyAdaptiveTrigger()
+		{
+			deviceFamily = Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily;
+		}
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DeviceFamilyAdaptiveTrigger"/> class.
 		/// </summary>
 		public DeviceFamilyAdaptiveTrigger()
 		{
-			if (deviceFamily == null)
-			{
-				var qualifiers = Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().QualifierValues;
-				if (qualifiers.ContainsKey("DeviceFamily"))
-					deviceFamily = qualifiers["DeviceFamily"];
-				else
-					deviceFamily = "";
-			}
 		}
 
 		/// <summary>
@@ -49,10 +46,12 @@ namespace WindowsStateTriggers
 		{
 			var obj = (DeviceFamilyAdaptiveTrigger)d;
 			var val = (DeviceFamily)e.NewValue;
-			if (deviceFamily == "Mobile")
+			if (deviceFamily == "Windows.Mobile")
 				obj.SetActive(val == DeviceFamily.Mobile);
-			else if (deviceFamily == "Desktop")
+			else if (deviceFamily == "Windows.Desktop")
 				obj.SetActive(val == DeviceFamily.Desktop);
+			else if (deviceFamily == "Windows.Universal")
+				obj.SetActive(val == DeviceFamily.Universal);			
 			else
 				obj.SetActive(val == DeviceFamily.Unknown);
 		}
@@ -75,5 +74,9 @@ namespace WindowsStateTriggers
 		/// Mobile
 		/// </summary>
 		Mobile = 2,
+		/// <summary>
+		/// Windows universal (for some reason this is returned by IoT
+		/// </summary>
+		Universal = 255
 	}
 }
