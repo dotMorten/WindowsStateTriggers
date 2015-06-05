@@ -15,7 +15,7 @@
 			<VisualStateGroup >
 				<VisualState x:Name="less">
 					<VisualState.StateTriggers>
-						<triggers:CompareStateTrigger Value="{Binding Value, ElementName=slider}" CompareTo="3" Comparison="LessThan" />
+						<triggers:CompareStateTrigger Value="{x:Bind slider.Value, Mode=OneWay}" CompareTo="3" Comparison="LessThan" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="sliderStatus.Text" Value="Slider value is less than 3" />
@@ -23,7 +23,7 @@
 				</VisualState>
 				<VisualState x:Name="equal">
 					<VisualState.StateTriggers>
-						<triggers:CompareStateTrigger Value="{Binding Value, ElementName=slider}" CompareTo="3" Comparison="Equal" />
+						<triggers:CompareStateTrigger Value="{x:Bind slider.Value, Mode=OneWay}" CompareTo="3" Comparison="Equal" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="sliderStatus.Text" Value="Slider value is 3" />
@@ -31,7 +31,7 @@
 				</VisualState>
 				<VisualState x:Name="greater">
 					<VisualState.StateTriggers>
-						<triggers:CompareStateTrigger Value="{Binding Value, ElementName=slider}" CompareTo="3" Comparison="GreaterThan" />
+						<triggers:CompareStateTrigger Value="{x:Bind slider.Value, Mode=OneWay}" CompareTo="3" Comparison="GreaterThan" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="sliderStatus.Text" Value="Slider value is greater than 3" />
@@ -42,8 +42,10 @@
 			<VisualStateGroup >
 				<VisualState x:Name="between">
 					<VisualState.StateTriggers>
-						<triggers:CompareStateTrigger Value="{Binding Value, ElementName=slider2}" CompareTo="3" Comparison="GreaterThan" />
-						<triggers:CompareStateTrigger Value="{Binding Value, ElementName=slider2}" CompareTo="7" Comparison="LessThan" />
+						<triggers:CompositeStateTrigger Operator="And">
+							<triggers:CompareStateTrigger Value="{x:Bind slider2.Value, Mode=OneWay}" CompareTo="3" Comparison="GreaterThan" />
+							<triggers:CompareStateTrigger Value="{x:Bind slider2.Value, Mode=OneWay}" CompareTo="7" Comparison="LessThan" />
+						</triggers:CompositeStateTrigger>
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="sliderStatus2.Text" Value="Slider value is between 3 and 7" />
@@ -54,11 +56,10 @@
 
 		<StackPanel VerticalAlignment="Center">
 			<Slider x:Name="slider" Minimum="0" Maximum="5" />
-			<TextBlock x:Name="sliderStatus" Text="Slider is value is not 0" />
+			<TextBlock x:Name="sliderStatus" Text="If you see this, trigger isn't working" />
 
 			<Slider x:Name="slider2" Minimum="0" Maximum="10" />
-			<TextBlock x:Name="sliderStatus2" Text="Slider is outside range" />
-			<TextBlock Text="WinRT Bug?" Foreground="Red" FontSize="8" />
+			<TextBlock x:Name="sliderStatus2" Text="Slider value is not between 3 and 7" />
 		</StackPanel>
 
 	</Grid>

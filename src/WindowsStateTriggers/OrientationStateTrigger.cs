@@ -15,7 +15,7 @@ namespace WindowsStateTriggers
     /// <summary>
     /// Trigger for switching when the screen orientation changes
     /// </summary>
-	public class OrientationStateTrigger : StateTriggerBase
+	public class OrientationStateTrigger : StateTriggerBase, ITriggerValue
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="OrientationStateTrigger"/> class.
@@ -43,17 +43,17 @@ namespace WindowsStateTriggers
         {
             if (orientation == Windows.Graphics.Display.DisplayOrientations.None)
             {
-                SetActive(false);
+                IsActive = false;
             }
             else if (orientation == Windows.Graphics.Display.DisplayOrientations.Landscape ||
                orientation == Windows.Graphics.Display.DisplayOrientations.LandscapeFlipped)
             {
-                SetActive(Orientation == Orientations.Landscape);
+                IsActive = Orientation == Orientations.Landscape;
             }
             else if (orientation == Windows.Graphics.Display.DisplayOrientations.Portrait ||
                     orientation == Windows.Graphics.Display.DisplayOrientations.PortraitFlipped)
             {
-                SetActive(Orientation == Orientations.Portrait);
+				IsActive = Orientation == Orientations.Portrait;
             }
         }
 
@@ -82,6 +82,36 @@ namespace WindowsStateTriggers
 				obj.UpdateTrigger(orientation);
 			}
         }
+
+		#region ITriggerValue
+
+		private bool m_IsActive;
+
+		/// <summary>
+		/// Gets a value indicating whether this trigger is active.
+		/// </summary>
+		/// <value><c>true</c> if this trigger is active; otherwise, <c>false</c>.</value>
+		public bool IsActive
+		{
+			get { return m_IsActive; }
+			private set
+			{
+				if (m_IsActive != value)
+				{
+					m_IsActive = value;
+					base.SetActive(value);
+					if (IsActiveChanged != null)
+						IsActiveChanged(this, EventArgs.Empty);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Occurs when the <see cref="IsActive" /> property has changed.
+		/// </summary>
+		public event EventHandler IsActiveChanged;
+
+		#endregion ITriggerValue
 
 		/// <summary>
 		/// Orientations

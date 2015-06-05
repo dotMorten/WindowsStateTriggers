@@ -16,7 +16,7 @@ namespace WindowsStateTriggers
     /// <summary>
     /// Trigger for switching when the network availability changes
     /// </summary>
-	public class NetworkConnectionStateTrigger : StateTriggerBase
+	public class NetworkConnectionStateTrigger : StateTriggerBase, ITriggerValue
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NetworkConnectionStateTrigger"/> class.
@@ -44,7 +44,7 @@ namespace WindowsStateTriggers
 			var profile = NetworkInformation.GetInternetConnectionProfile();
 			if(profile != null)
 				isConnected = profile.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
-			SetActive(
+			IsActive = (
 				 isConnected && ConnectionState == ConnectionState.Connected ||
 				!isConnected && ConnectionState == ConnectionState.Disconnected);
 		}
@@ -69,7 +69,37 @@ namespace WindowsStateTriggers
 		{
 			var obj = (NetworkConnectionStateTrigger)d;
             obj.UpdateState();
-        }
+		}
+
+		#region ITriggerValue
+
+		private bool m_IsActive;
+
+		/// <summary>
+		/// Gets a value indicating whether this trigger is active.
+		/// </summary>
+		/// <value><c>true</c> if this trigger is active; otherwise, <c>false</c>.</value>
+		public bool IsActive
+		{
+			get { return m_IsActive; }
+			private set
+			{
+				if (m_IsActive != value)
+				{
+					m_IsActive = value;
+					base.SetActive(value);
+					if (IsActiveChanged != null)
+						IsActiveChanged(this, EventArgs.Empty);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Occurs when the <see cref="IsActive" /> property has changed.
+		/// </summary>
+		public event EventHandler IsActiveChanged;
+
+		#endregion ITriggerValue
 	}
 
 	/// <summary>

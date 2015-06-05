@@ -48,6 +48,9 @@
 					<samples:PointerDeviceTypeSample />
 				</local:SampleContainer>
 
+				<local:SampleContainer Title="CompositeTrigger">
+					<samples:CompositeSample />
+				</local:SampleContainer>
 			</VariableSizedWrapGrid>
 		</ScrollViewer>
 	</Grid>

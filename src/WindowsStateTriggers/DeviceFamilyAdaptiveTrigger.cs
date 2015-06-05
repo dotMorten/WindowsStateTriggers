@@ -1,6 +1,7 @@
 // Copyright (c) Morten Nielsen. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 
@@ -9,7 +10,7 @@ namespace WindowsStateTriggers
 	/// <summary>
 	/// Trigger for switching between Windows and Windows Phone
 	/// </summary>
-	public class DeviceFamilyAdaptiveTrigger : StateTriggerBase
+	public class DeviceFamilyAdaptiveTrigger : StateTriggerBase, ITriggerValue
 	{
 		private static string deviceFamily;
 
@@ -47,14 +48,44 @@ namespace WindowsStateTriggers
 			var obj = (DeviceFamilyAdaptiveTrigger)d;
 			var val = (DeviceFamily)e.NewValue;
 			if (deviceFamily == "Windows.Mobile")
-				obj.SetActive(val == DeviceFamily.Mobile);
+				obj.IsActive = (val == DeviceFamily.Mobile);
 			else if (deviceFamily == "Windows.Desktop")
-				obj.SetActive(val == DeviceFamily.Desktop);
+				obj.IsActive = (val == DeviceFamily.Desktop);
 			else if (deviceFamily == "Windows.Universal")
-				obj.SetActive(val == DeviceFamily.Universal);			
+				obj.IsActive = (val == DeviceFamily.Universal);			
 			else
-				obj.SetActive(val == DeviceFamily.Unknown);
+				obj.IsActive = (val == DeviceFamily.Unknown);
 		}
+
+		#region ITriggerValue
+
+		private bool m_IsActive;
+
+		/// <summary>
+		/// Gets a value indicating whether this trigger is active.
+		/// </summary>
+		/// <value><c>true</c> if this trigger is active; otherwise, <c>false</c>.</value>
+		public bool IsActive
+		{
+			get { return m_IsActive; }
+			private set
+			{
+				if (m_IsActive != value)
+				{
+					m_IsActive = value;
+					base.SetActive(value);
+					if (IsActiveChanged != null)
+						IsActiveChanged(this, EventArgs.Empty);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Occurs when the <see cref="IsActive" /> property has changed.
+		/// </summary>
+		public event EventHandler IsActiveChanged;
+
+		#endregion ITriggerValue
 	}
 
 	/// <summary>

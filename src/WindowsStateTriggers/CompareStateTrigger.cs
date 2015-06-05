@@ -19,12 +19,11 @@ namespace WindowsStateTriggers
 	/// </code>
 	/// </para>
 	/// </remarks>
-	public class CompareStateTrigger : StateTriggerBase
+	public class CompareStateTrigger : StateTriggerBase, ITriggerValue
 	{
 		private void UpdateTrigger()
 		{
-			var result = CompareValues() == Comparison;
-			SetActive(result);
+			IsActive = CompareValues() == Comparison;
 		}
 
 		/// <summary>
@@ -116,6 +115,36 @@ namespace WindowsStateTriggers
 			}
 			return Comparison.NotComparable;
 		}
+
+		#region ITriggerValue
+
+		private bool m_IsActive;
+
+		/// <summary>
+		/// Gets a value indicating whether this trigger is active.
+		/// </summary>
+		/// <value><c>true</c> if this trigger is active; otherwise, <c>false</c>.</value>
+		public bool IsActive
+		{
+			get { return m_IsActive; }
+			private set
+			{
+				if (m_IsActive != value)
+				{
+					m_IsActive = value;
+					base.SetActive(value);
+					if (IsActiveChanged != null)
+						IsActiveChanged(this, EventArgs.Empty);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Occurs when the <see cref="IsActive" /> property has changed.
+		/// </summary>
+		public event EventHandler IsActiveChanged;
+
+		#endregion ITriggerValue
 	}
 	/// <summary>
 	/// Comparison types

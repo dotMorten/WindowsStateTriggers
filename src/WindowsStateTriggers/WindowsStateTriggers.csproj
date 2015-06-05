@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompareStateTrigger.cs" />
+    <Compile Include="CompositeStateTrigger.cs" />
     <Compile Include="InputTypeTrigger.cs" />
+    <Compile Include="ITriggerValue.cs" />
     <Compile Include="NotEqualStateTrigger.cs" />
     <Compile Include="IsFalseStateTrigger.cs" />
     <Compile Include="EqualsStateTrigger.cs" />

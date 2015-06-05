@@ -1,6 +1,7 @@
 // Copyright (c) Morten Nielsen. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
 using System.Globalization;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
@@ -18,11 +19,11 @@ namespace WindowsStateTriggers
 	/// </code>
 	/// </para>
 	/// </remarks>
-	public class EqualsStateTrigger : StateTriggerBase
+	public class EqualsStateTrigger : StateTriggerBase, ITriggerValue
 	{
 		private void UpdateTrigger()
 		{
-			SetActive(EqualsStateTrigger.AreValuesEqual(Value, EqualTo, true));
+			IsActive = (EqualsStateTrigger.AreValuesEqual(Value, EqualTo, true));
 		}
 
 		/// <summary>
@@ -89,5 +90,35 @@ namespace WindowsStateTriggers
 			}
 			return false;
 		}
+
+		#region ITriggerValue
+
+		private bool m_IsActive;
+
+		/// <summary>
+		/// Gets a value indicating whether this trigger is active.
+		/// </summary>
+		/// <value><c>true</c> if this trigger is active; otherwise, <c>false</c>.</value>
+		public bool IsActive
+		{
+			get { return m_IsActive; }
+			private set
+			{
+				if (m_IsActive != value)
+				{
+					m_IsActive = value;
+					base.SetActive(value);
+					if (IsActiveChanged != null)
+						IsActiveChanged(this, EventArgs.Empty);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Occurs when the <see cref="IsActive" /> property has changed.
+		/// </summary>
+		public event EventHandler IsActiveChanged;
+
+		#endregion ITriggerValue
 	}
 }

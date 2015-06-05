@@ -34,7 +34,7 @@
 						<triggers:InputTypeTrigger TargetElement="{x:Bind root}" PointerType="Pen" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
-						<Setter Target="pointerStatus.Text" Value="You're using a pan" />
+						<Setter Target="pointerStatus.Text" Value="You're using a pen" />
 					</VisualState.Setters>
 				</VisualState>
 			</VisualStateGroup>
