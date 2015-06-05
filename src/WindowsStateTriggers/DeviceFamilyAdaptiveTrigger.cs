@@ -51,6 +51,8 @@ namespace WindowsStateTriggers
 				obj.IsActive = (val == DeviceFamily.Mobile);
 			else if (deviceFamily == "Windows.Desktop")
 				obj.IsActive = (val == DeviceFamily.Desktop);
+			else if (deviceFamily == "Windows.Team")
+				obj.IsActive = (val == DeviceFamily.Team);
 			else if (deviceFamily == "Windows.Universal")
 				obj.IsActive = (val == DeviceFamily.Universal);			
 			else
@@ -105,6 +107,10 @@ namespace WindowsStateTriggers
 		/// Mobile
 		/// </summary>
 		Mobile = 2,
+		/// <summary>
+		/// Team
+		/// </summary>
+		Team = 3,
 		/// <summary>
 		/// Windows universal (for some reason this is returned by IoT
 		/// </summary>
