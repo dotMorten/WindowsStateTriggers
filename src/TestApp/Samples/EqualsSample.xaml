@@ -16,7 +16,7 @@
 				<VisualState x:Name="checkstate">
 					<VisualState.StateTriggers>
 						<!--Checkbox is null when indeterminate-->
-						<triggers:EqualsStateTrigger Value="{Binding IsChecked, ElementName=checkbox}" EqualTo="{x:Null}" />
+						<triggers:EqualsStateTrigger Value="{x:Bind checkbox.IsChecked, Mode=OneWay}" EqualTo="{x:Null}" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="checkStatus.Text" Value="Checkbox value is indeterminate" />
@@ -26,7 +26,7 @@
 			<VisualStateGroup >
 					<VisualState x:Name="sliderstate">
 					<VisualState.StateTriggers>
-						<triggers:EqualsStateTrigger Value="{Binding Value, ElementName=slider}" EqualTo="0" />
+						<triggers:EqualsStateTrigger Value="{x:Bind slider.Value, Mode=OneWay}" EqualTo="0" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="sliderStatus.Text" Value="Slider value is 0" />

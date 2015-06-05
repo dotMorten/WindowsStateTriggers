@@ -15,7 +15,7 @@
 			<VisualStateGroup >
 				<VisualState x:Name="checkstate">
 					<VisualState.StateTriggers>
-						<StateTrigger IsActive="{Binding IsChecked, ElementName=checkbox}"/>
+						<StateTrigger IsActive="{x:Bind checkbox.IsChecked.Value, Mode=OneWay}"/>
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="checkStatus.Opacity" Value="1" />
@@ -23,7 +23,7 @@
 				</VisualState>
 				<VisualState x:Name="uncheckstate">
 					<VisualState.StateTriggers>
-						<triggers:IsFalseStateTrigger Value="{Binding IsChecked, ElementName=checkbox}"/>
+						<triggers:IsFalseStateTrigger Value="{x:Bind checkbox.IsChecked.Value, Mode=OneWay}"/>
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="uncheckStatus.Opacity" Value="1" />
