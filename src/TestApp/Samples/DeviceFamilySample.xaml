@@ -21,12 +21,20 @@
 						<Setter Target="greeting.Text" Value="Hello Windows Desktop!" />
 					</VisualState.Setters>
 				</VisualState>
-				<VisualState x:Name="phone">
+				<VisualState x:Name="mobile">
 					<VisualState.StateTriggers>
 						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Mobile" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
-						<Setter Target="greeting.Text" Value="Hello Windows Phone!" />
+						<Setter Target="greeting.Text" Value="Hello Windows Mobile!" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="team">
+					<VisualState.StateTriggers>
+						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Team" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="greeting.Text" Value="Hello Windows Team!" />
 					</VisualState.Setters>
 				</VisualState>
 			</VisualStateGroup>
