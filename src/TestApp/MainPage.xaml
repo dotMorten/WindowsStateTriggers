@@ -28,7 +28,11 @@
 					<samples:IsTrueFalseSample />
 				</local:SampleContainer>
 
-				<local:SampleContainer Title="IsTypePresentStateTrigger">
+                <local:SampleContainer Title="IsNullOrEmptyStateTrigger">
+                    <samples:IsNullOrEmptySample />
+                </local:SampleContainer>
+
+                <local:SampleContainer Title="IsTypePresentStateTrigger">
 					<samples:IsTypePresentSample />
 				</local:SampleContainer>
 

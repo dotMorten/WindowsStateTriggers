@@ -11,6 +11,7 @@ http://www.sharpgis.net/post/2015/03/24/Using-Custom-Visual-State-Triggers
 - `OrientationStateTrigger`: Trigger based on portrait/landscape mode
 - `IsTrueStateTrigger`: Trigger if a value is true - REMOVED ! use `StateTrigger` and bind to `IsActive`
 - `IsFalseStateTrigger`: Trigger if a value is false
+- `IsNullOrEmptyStateTrigger`: Trigger if an object is null, or if a String or IEnumerable is empty
 - `IsTypePresentStateTrigger`: Trigger if a type is present (ie hardware backbutton etc)
 - `EqualsStateTrigger`: Trigger if `Value` is equal to `EqualTo`
 - `NotEqualStateTrigger`: Trigger if `Value` is not equal to `NotEqualTo`
