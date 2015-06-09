@@ -11,7 +11,7 @@
 
 		<ScrollViewer HorizontalScrollMode="Disabled" ZoomMode="Disabled">
 			<VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="350" Margin="5" >
-			
+
 				<local:SampleContainer Title="DeviceFamilyAdaptiveTrigger">
 					<samples:DeviceFamilySample />
 				</local:SampleContainer>
@@ -28,11 +28,11 @@
 					<samples:IsTrueFalseSample />
 				</local:SampleContainer>
 
-                <local:SampleContainer Title="IsNullOrEmptyStateTrigger">
-                    <samples:IsNullOrEmptySample />
-                </local:SampleContainer>
+				<local:SampleContainer Title="IsNullOrEmptyStateTrigger">
+					<samples:IsNullOrEmptySample />
+				</local:SampleContainer>
 
-                <local:SampleContainer Title="IsTypePresentStateTrigger">
+				<local:SampleContainer Title="IsTypePresentStateTrigger">
 					<samples:IsTypePresentSample />
 				</local:SampleContainer>
 
@@ -55,7 +55,7 @@
 				<local:SampleContainer Title="CompositeTrigger">
 					<samples:CompositeSample />
 				</local:SampleContainer>
-				
+
 				<local:SampleContainer Title="RegexStateTrigger">
 					<samples:RegexSample />
 				</local:SampleContainer>
