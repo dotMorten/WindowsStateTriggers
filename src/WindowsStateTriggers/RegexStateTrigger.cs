@@ -1,10 +1,7 @@
 // Copyright (c) Morten Nielsen. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System;
-using System.Globalization;
 using System.Text.RegularExpressions;
-using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 
 namespace WindowsStateTriggers
@@ -20,36 +17,19 @@ namespace WindowsStateTriggers
 	/// </code>
 	/// </para>
 	/// </remarks>
-	public class RegexStateTrigger : StateTriggerBase, ITriggerValue
+	public class RegexStateTrigger : ConditionStateTriggerBase<string>
 	{
-		private void UpdateTrigger()
-		{
-			IsActive =
-					Value != null && 
-					!string.IsNullOrEmpty(Expression) &&
-                    Regex.IsMatch(Value, Expression, Options);
-		}
-
 		/// <summary>
-		/// Gets or sets the value for regex evaluation.
+		/// Predicate that causes the trigger to activate when satisfied.
 		/// </summary>
-		public string Value
+		/// <param name="value">The value used as input to this trigger.</param>
+		/// <returns>A <see cref="bool"/> indicating whether the trigger is active.</returns>
+		protected override bool Condition(string value)
 		{
-			get { return (string)GetValue(ValueProperty); }
-			set { SetValue(ValueProperty, value); }
-		}
-
-		/// <summary>
-		/// Identifies the <see cref="Value"/> DependencyProperty
-		/// </summary>
-		public static readonly DependencyProperty ValueProperty =
-			DependencyProperty.Register(nameof(Value), typeof(string), typeof(RegexStateTrigger), 
-			new PropertyMetadata(null, OnValuePropertyChanged));
-
-		private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-		{
-			var obj = (RegexStateTrigger)d;
-			obj.UpdateTrigger();
+			return
+				value != null &&
+				!string.IsNullOrEmpty(Expression) &&
+				Regex.IsMatch(value, Expression, Options);
 		}
 
 		/// <summary>
@@ -81,35 +61,5 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public static readonly DependencyProperty OptionsProperty =
 			DependencyProperty.Register(nameof(Options), typeof(RegexOptions), typeof(RegexStateTrigger), new PropertyMetadata(RegexOptions.None, OnValuePropertyChanged));
-		
-		#region ITriggerValue
-
-		private bool m_IsActive;
-
-		/// <summary>
-		/// Gets a value indicating whether this trigger is active.
-		/// </summary>
-		/// <value><c>true</c> if this trigger is active; otherwise, <c>false</c>.</value>
-		public bool IsActive
-		{
-			get { return m_IsActive; }
-			private set
-			{
-				if (m_IsActive != value)
-				{
-					m_IsActive = value;
-					base.SetActive(value);
-					if (IsActiveChanged != null)
-						IsActiveChanged(this, EventArgs.Empty);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Occurs when the <see cref="IsActive" /> property has changed.
-		/// </summary>
-		public event EventHandler IsActiveChanged;
-
-		#endregion ITriggerValue
 	}
 }

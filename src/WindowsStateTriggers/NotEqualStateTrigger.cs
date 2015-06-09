@@ -1,43 +1,23 @@
 // Copyright (c) Morten Nielsen. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System;
-using System.Globalization;
-using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 
 namespace WindowsStateTriggers
 {
-    /// <summary>
-    /// Enables a state if the value is not equal to another value
-    /// </summary>
-    public class NotEqualStateTrigger : StateTriggerBase
+	/// <summary>
+	/// Enables a state if the value is not equal to another value
+	/// </summary>
+	public class NotEqualStateTrigger : ConditionStateTriggerBase<object>
 	{
-		private void UpdateTrigger()
-		{
-			IsActive = !EqualsStateTrigger.AreValuesEqual(Value, NotEqualTo, true);
-		}
-
 		/// <summary>
-		/// Gets or sets the value for comparison.
+		/// Predicate that causes the trigger to activate when satisfied.
 		/// </summary>
-		public object Value
+		/// <param name="value">The value used as input to this trigger.</param>
+		/// <returns>A <see cref="bool"/> indicating whether the trigger is active.</returns>
+		protected override bool Condition(object value)
 		{
-			get { return (object)GetValue(ValueProperty); }
-			set { SetValue(ValueProperty, value); }
-		}
-
-		/// <summary>
-		/// Identifies the <see cref="Value"/> DependencyProperty
-		/// </summary>
-		public static readonly DependencyProperty ValueProperty =
-			DependencyProperty.Register("Value", typeof(object), typeof(NotEqualStateTrigger), 
-			new PropertyMetadata(null, OnValuePropertyChanged));
-
-		private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-		{
-			var obj = (NotEqualStateTrigger)d;
-			obj.UpdateTrigger();
+			return !EqualsStateTrigger.AreValuesEqual(Value, NotEqualTo, true);
 		}
 
 		/// <summary>
@@ -45,7 +25,7 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public object NotEqualTo
 		{
-			get { return (object)GetValue(NotEqualToProperty); }
+			get { return GetValue(NotEqualToProperty); }
 			set { SetValue(NotEqualToProperty, value); }
 		}
 
@@ -54,35 +34,5 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public static readonly DependencyProperty NotEqualToProperty =
 					DependencyProperty.Register("NotEqualTo", typeof(object), typeof(NotEqualStateTrigger), new PropertyMetadata(null, OnValuePropertyChanged));
-
-		#region ITriggerValue
-
-		private bool m_IsActive;
-
-		/// <summary>
-		/// Gets a value indicating whether this trigger is active.
-		/// </summary>
-		/// <value><c>true</c> if this trigger is active; otherwise, <c>false</c>.</value>
-		public bool IsActive
-		{
-			get { return m_IsActive; }
-			private set
-			{
-				if (m_IsActive != value)
-				{
-					m_IsActive = value;
-					base.SetActive(value);
-					if (IsActiveChanged != null)
-						IsActiveChanged(this, EventArgs.Empty);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Occurs when the <see cref="IsActive" /> property has changed.
-		/// </summary>
-		public event EventHandler IsActiveChanged;
-
-		#endregion ITriggerValue
 	}
 }

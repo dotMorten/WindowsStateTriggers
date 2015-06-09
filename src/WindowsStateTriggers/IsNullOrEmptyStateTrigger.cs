@@ -1,53 +1,43 @@
 // Copyright (c) Morten Nielsen. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System;
 using System.Collections;
 using System.Collections.Specialized;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 
 namespace WindowsStateTriggers
 {
 	/// <summary>
 	/// Enables a state if an Object is <c>null</c> or a String/IEnumerable is empty
 	/// </summary>
-	public class IsNullOrEmptyStateTrigger : StateTriggerBase, ITriggerValue
+	public class IsNullOrEmptyStateTrigger : ConditionStateTriggerBase<object>
 	{
 		/// <summary>
-		/// Gets or sets the value used to check for <c>null</c> or empty.
+		/// Predicate that causes the trigger to activate when satisfied.
 		/// </summary>
-		public object Value
+		/// <param name="value">The value used as input to this trigger.</param>
+		/// <returns>A <see cref="bool"/> indicating whether the trigger is active.</returns>
+		protected override bool Condition(object value)
 		{
-			get { return GetValue(ValueProperty); }
-			set { SetValue(ValueProperty, value); }
+			return IsNullOrEmpty(value);
 		}
 
 		/// <summary>
-		/// Identifies the <see cref="Value"/> DependencyProperty
+		/// Method called when the <see cref="ConditionStateTriggerBase{T}.Value"/> changes that can be overriden by classes that inherit from <see cref="ConditionStateTriggerBase{T}"/>.
 		/// </summary>
-		public static readonly DependencyProperty ValueProperty =
-			DependencyProperty.Register("Value", typeof(object), typeof(IsNullOrEmptyStateTrigger),
-			new PropertyMetadata(true, OnValuePropertyChanged));
-
-		private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+		protected override void ValueChanged()
 		{
-			var obj = (IsNullOrEmptyStateTrigger)d;
-			var val = e.NewValue;
-
-			obj.IsActive = IsNullOrEmpty(val);
-
-			if (val == null)
+			if (Value == null)
 				return;
 
 			// Try to listen for various notification events
 			// Starting with INorifyCollectionChanged
-			var valNotifyCollection = val as INotifyCollectionChanged;
+			var valNotifyCollection = Value as INotifyCollectionChanged;
 			if (valNotifyCollection != null)
 			{
 				var weakEvent = new WeakEventListener<INotifyCollectionChanged, object, NotifyCollectionChangedEventArgs>(valNotifyCollection)
 				{
-					OnEventAction = (instance, source, args) => obj.IsActive = IsNullOrEmpty(instance),
+					OnEventAction = (instance, source, args) => UpdateTrigger(),
 					OnDetachAction = (instance, weakEventListener) => instance.CollectionChanged -= weakEventListener.OnEvent
 				};
 
@@ -56,12 +46,12 @@ namespace WindowsStateTriggers
 			}
 
 			// Not INotifyCollectionChanged, try IObservableVector
-			var valObservableVector = val as IObservableVector<object>;
+			var valObservableVector = Value as IObservableVector<object>;
 			if (valObservableVector != null)
 			{
 				var weakEvent = new WeakEventListener<IObservableVector<object>, object, IVectorChangedEventArgs>(valObservableVector)
 				{
-					OnEventAction = (instance, source, args) => obj.IsActive = IsNullOrEmpty(instance),
+					OnEventAction = (instance, source, args) => UpdateTrigger(),
 					OnDetachAction = (instance, weakEventListener) => instance.VectorChanged -= weakEventListener.OnEvent
 				};
 
@@ -70,12 +60,12 @@ namespace WindowsStateTriggers
 			}
 
 			// Not INotifyCollectionChanged, try IObservableMap
-			var valObservableMap = val as IObservableMap<object,object>;
+			var valObservableMap = Value as IObservableMap<object,object>;
 			if (valObservableMap != null)
 			{
 				var weakEvent = new WeakEventListener<IObservableMap<object, object>, object, IMapChangedEventArgs<object>>(valObservableMap)
 				{
-					OnEventAction = (instance, source, args) => obj.IsActive = IsNullOrEmpty(instance),
+					OnEventAction = (instance, source, args) => UpdateTrigger(),
 					OnDetachAction = (instance, weakEventListener) => instance.MapChanged -= weakEventListener.OnEvent
 				};
 
@@ -117,35 +107,5 @@ namespace WindowsStateTriggers
 			// Not null and not a known type to test for emptiness
 			return false;
 		}
-
-		#region ITriggerValue
-
-		private bool m_IsActive;
-
-		/// <summary>
-		/// Gets a value indicating whether this trigger is active.
-		/// </summary>
-		/// <value><c>true</c> if this trigger is active; otherwise, <c>false</c>.</value>
-		public bool IsActive
-		{
-			get { return m_IsActive; }
-			private set
-			{
-				if (m_IsActive != value)
-				{
-					m_IsActive = value;
-					base.SetActive(value);
-					if (IsActiveChanged != null)
-						IsActiveChanged(this, EventArgs.Empty);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Occurs when the <see cref="IsActive" /> property has changed.
-		/// </summary>
-		public event EventHandler IsActiveChanged;
-
-		#endregion ITriggerValue
 	}
 }
