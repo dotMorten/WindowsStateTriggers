@@ -55,6 +55,10 @@
 				<local:SampleContainer Title="CompositeTrigger">
 					<samples:CompositeSample />
 				</local:SampleContainer>
+				
+				<local:SampleContainer Title="RegexStateTrigger">
+					<samples:RegexSample />
+				</local:SampleContainer>
 			</VariableSizedWrapGrid>
 		</ScrollViewer>
 	</Grid>
