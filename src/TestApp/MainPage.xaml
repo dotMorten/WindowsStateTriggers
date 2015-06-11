@@ -59,6 +59,10 @@
 				<local:SampleContainer Title="RegexStateTrigger">
 					<samples:RegexSample />
 				</local:SampleContainer>
+
+				<local:SampleContainer Title="UserHandPreferenceStateTrigger">
+					<samples:HandPreferenceSample />
+				</local:SampleContainer>
 			</VariableSizedWrapGrid>
 		</ScrollViewer>
 	</Grid>
