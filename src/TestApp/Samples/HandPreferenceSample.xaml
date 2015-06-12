@@ -23,7 +23,7 @@
 				</VisualState>
 				<VisualState x:Name="rightHanded">
 					<VisualState.StateTriggers>
-						<triggers:UserHandPreferenceStateTrigger HandPreference="RightHanded" />
+						<triggers:UserHandPreferenceStateTrigger/>
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="handPreferenceStatus.Text" Value="You are right handed" />

@@ -9,7 +9,7 @@ using Windows.UI.Xaml;
 namespace WindowsStateTriggers
 {
 	/// <summary>
-	/// Trigger for switching between Windows and Windows Phone
+	/// Trigger for switching UI based on whether the user favours their left or right hand.
 	/// </summary>
 	public class UserHandPreferenceStateTrigger : StateTriggerBase, ITriggerValue
 	{
@@ -21,10 +21,11 @@ namespace WindowsStateTriggers
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DeviceFamilyAdaptiveTrigger"/> class.
+		/// Initializes a new instance of the <see cref="UserHandPreferenceStateTrigger"/> class.
 		/// </summary>
 		public UserHandPreferenceStateTrigger()
 		{
+			IsActive = (this.HandPreference == handPreference);
 		}
 
 		/// <summary>
