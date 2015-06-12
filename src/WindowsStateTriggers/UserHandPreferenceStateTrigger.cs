@@ -25,7 +25,7 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public UserHandPreferenceStateTrigger()
 		{
-			IsActive = (this.HandPreference == handPreference);
+			IsActive = (handPreference == HandPreference.RightHanded);
 		}
 
 		/// <summary>
