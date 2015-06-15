@@ -103,6 +103,9 @@
     <Compile Include="Samples\IsNullOrEmptySample.xaml.cs">
       <DependentUpon>IsNullOrEmptySample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\HandPreferenceSample.xaml.cs">
+      <DependentUpon>HandPreferenceSample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\RegexSample.xaml.cs">
       <DependentUpon>RegexSample.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Samples\IsNullOrEmptySample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\HandPreferenceSample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
