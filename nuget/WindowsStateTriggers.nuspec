@@ -24,7 +24,7 @@
         
      
       <!-- Source -->
-      <file src="..\src\WindowsStateTriggers\**\*.cs" target="src" exclude="_ReSharper.*\**\*.*;packages\**\*.*;**\Debug\**\*.*"/>       
+      <file src="..\src\WindowsStateTriggers\**\*.cs" target="src" exclude="_ReSharper.*\**\*.*;packages\**\*.*;**\Debug\**\*.*;**\obj\**\*.*"/>       
       
     </files>
 </package>
