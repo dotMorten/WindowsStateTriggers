@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{62
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{385AB049-EBF3-4B9D-894C-BA16586AA3AF}"
 	ProjectSection(SolutionItems) = preProject
-		nuget\WindowsStateTriggers.nuspec = ..\nuget\WindowsStateTriggers.nuspec
+		..\nuget\WindowsStateTriggers.nuspec = ..\nuget\WindowsStateTriggers.nuspec
 	EndProjectSection
 EndProject
 Global
@@ -64,6 +64,8 @@ Global
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|x64.Build.0 = Release|x64
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|x64.Deploy.0 = Release|x64
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|x86.ActiveCfg = Release|x86
+		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|x86.Build.0 = Release|x86
+		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
