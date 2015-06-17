@@ -18,7 +18,7 @@
 						<triggers:UserHandPreferenceStateTrigger HandPreference="LeftHanded" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
-						<Setter Target="handPreferenceStatus.Text" Value="You are left Handed" />
+						<Setter Target="handPreferenceStatus.Text" Value="You are left-handed" />
 					</VisualState.Setters>
 				</VisualState>
 				<VisualState x:Name="rightHanded">
@@ -26,17 +26,18 @@
 						<triggers:UserHandPreferenceStateTrigger/>
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
-						<Setter Target="handPreferenceStatus.Text" Value="You are right handed" />
+						<Setter Target="handPreferenceStatus.Text" Value="You are right-handed" />
 					</VisualState.Setters>
 				</VisualState>
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
 
-		<StackPanel>
+		<StackPanel VerticalAlignment="Center">
 			<TextBlock x:Name="handPreferenceStatus" 
-                   HorizontalAlignment="Center" 
-				   VerticalAlignment="Center" />
-			<TextBlock TextWrapping="WrapWholeWords" Text="Set your hand preference in Windows settings (Devices -> Pen) then restart the app." />
+                   HorizontalAlignment="Center" FontWeight="Bold" />
+			<TextBlock TextWrapping="WrapWholeWords" 
+					   Margin="0,10"
+					   Text="Set your hand preference in Windows settings (Devices -> Pen) then restart the app." />
 		</StackPanel>
 	</Grid>
 </UserControl>
