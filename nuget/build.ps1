@@ -33,7 +33,7 @@ if ($maxCpuCount -lt 1) {
     $maxCpuCountText = ":$maxCpuCount"
 }
 
-$solutionNameArg = "/property:SolutionName=WindowsStateTriggers.sln"
+$solutionNameArg = "/property:SolutionName=../src/WindowsStateTriggers.sln"
 
 $allArgs = @("WindowsStateTriggers.proj", "/m$maxCpuCountText", "/nologo", "/verbosity:$verbosity", "/t:$target", "/property:RequestedVerbosity=$verbosity", $solutionNameArg, $args)
 & $msbuild $allArgs

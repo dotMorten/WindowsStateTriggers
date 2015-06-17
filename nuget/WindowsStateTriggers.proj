@@ -4,7 +4,7 @@
   <!-- Settings -->
 
   <PropertyGroup>
-    <SolutionName Condition="'$(SolutionName)' == ''">WindowsStateTriggers.sln</SolutionName>
+    <SolutionName Condition="'$(SolutionName)' == ''">..\src\WindowsStateTriggers.sln</SolutionName>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Platform Condition="'$(Platform)' == ''">x86</Platform>
     <ParallelizeTests Condition="'$(ParallelizeTests)' == ''">true</ParallelizeTests>
@@ -14,7 +14,7 @@
     <RequestedVerbosity Condition=" '$(RequestedVerbosity)' == '' ">normal</RequestedVerbosity>
   </PropertyGroup>
   <ItemGroup>
-    <NuspecFiles Include="src\*.nuspec" />
+    <NuspecFiles Include="\*.nuspec" />
   </ItemGroup>
   <ItemGroup Condition=" '$(PackageSources)' == '' ">
     <PackageSource Include="https://nuget.org/api/v2/" />
@@ -70,7 +70,7 @@
   </Target>
 
   <Target Name="_DownloadNuGet">
-    <MakeDir Directories="$(SolutionDir)\.nuget" />
+    <MakeDir Directories="$(SolutionDir)\..\nuget\.nuget" />
     <DownloadNuGet OutputFilename="$(NuGetExePath)" Condition="!Exists('$(NuGetExePath)')" />
   </Target>
 

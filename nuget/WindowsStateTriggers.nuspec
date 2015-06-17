@@ -17,14 +17,14 @@
     </metadata>
     <files>
       
-      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.dll" target="lib\win81\WindowsStateTriggers.dll" />
-      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pdb" target="lib\win81\WindowsStateTriggers.pdb" />
-      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pri" target="lib\win81\WindowsStateTriggers.pri" />
-      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.xml" target="lib\win81\WindowsStateTriggers.xml" />
+      <file src="..\src\WindowsStateTriggers\bin\Release\WindowsStateTriggers.dll" target="lib\win81\WindowsStateTriggers.dll" />
+      <file src="..\src\WindowsStateTriggers\bin\Release\WindowsStateTriggers.pdb" target="lib\win81\WindowsStateTriggers.pdb" />
+      <file src="..\src\WindowsStateTriggers\bin\Release\WindowsStateTriggers.pri" target="lib\win81\WindowsStateTriggers.pri" />
+      <file src="..\src\WindowsStateTriggers\bin\Release\WindowsStateTriggers.xml" target="lib\win81\WindowsStateTriggers.xml" />
         
      
       <!-- Source -->
-      <file src="WindowsStateTriggers\**\*.cs" target="src" exclude="_ReSharper.*\**\*.*;packages\**\*.*;**\Debug\**\*.*"/>       
+      <file src="..\src\WindowsStateTriggers\**\*.cs" target="src" exclude="_ReSharper.*\**\*.*;packages\**\*.*;**\Debug\**\*.*"/>       
       
     </files>
 </package>
