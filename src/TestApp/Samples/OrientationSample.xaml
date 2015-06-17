@@ -32,10 +32,8 @@
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
 
-		<StackPanel>
-			<TextBlock x:Name="orientationStatus" 
-                   HorizontalAlignment="Center" 
-				   VerticalAlignment="Center" />
-		</StackPanel>
+		<TextBlock x:Name="orientationStatus" 
+                HorizontalAlignment="Center" 
+				VerticalAlignment="Center" />
 	</Grid>
 </UserControl>
