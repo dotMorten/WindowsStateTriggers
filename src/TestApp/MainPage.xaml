@@ -63,7 +63,11 @@
 				<local:SampleContainer Title="UserHandPreferenceStateTrigger">
 					<samples:HandPreferenceSample />
 				</local:SampleContainer>
-			</VariableSizedWrapGrid>
+
+                <local:SampleContainer Title="UserInteractionModeTrigger">
+                    <samples:UserInteractionModeSample />
+                </local:SampleContainer>
+            </VariableSizedWrapGrid>
 		</ScrollViewer>
 	</Grid>
 </Page>
