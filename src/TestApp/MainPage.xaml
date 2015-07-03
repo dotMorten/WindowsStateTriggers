@@ -71,7 +71,7 @@
                 <local:SampleContainer Title="EnumStateTrigger">
                     <samples:EnumSample />
                 </local:SampleContainer>
-                
+
             </VariableSizedWrapGrid>
         </ScrollViewer>
     </Grid>
