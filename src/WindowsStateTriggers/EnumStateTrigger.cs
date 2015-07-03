@@ -10,7 +10,7 @@ namespace WindowsStateTriggers
     /// <remarks>
     /// <para>
     /// <code lang="xaml">
-    ///     &lt;triggers:RegexStateTrigger Value="{x:Bind CurrentAccessLevel}" ActiveValues="Writer, Reader" />
+    ///     &lt;triggers:EnumStateTrigger Value="{x:Bind CurrentAccessLevel}" ActiveValues="Writer, Reader" />
     /// </code>
     /// </para>
     /// </remarks>
@@ -87,8 +87,7 @@ namespace WindowsStateTriggers
                 {
                     m_IsActive = value;
                     base.SetActive(value);
-                    if (IsActiveChanged != null)
-                        IsActiveChanged(this, EventArgs.Empty);
+                    IsActiveChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
