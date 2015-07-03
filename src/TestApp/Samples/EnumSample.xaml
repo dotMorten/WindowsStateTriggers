@@ -1,0 +1,50 @@
+﻿<UserControl
+    x:Class="TestApp.Samples.EnumSample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestApp.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:WindowsStateTriggers"
+	mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+
+            <VisualStateGroup >
+                <VisualState x:Name="none">
+                    <VisualState.StateTriggers>
+                        <triggers:EnumStateTrigger Value="{x:Bind SelectedAccessLevel, Mode=OneWay}" ActiveValues="None" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="enumStatus.Text" Value="Access level: none" />
+                        <Setter Target="accessLevelNone.FontWeight" Value="Bold" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="readerOrWriter">
+                    <VisualState.StateTriggers>
+                        <triggers:EnumStateTrigger Value="{x:Bind SelectedAccessLevel, Mode=OneWay}" ActiveValues="Reader, Writer" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="enumStatus.Text" Value="Access level: reader or writer" />
+                        <Setter Target="accessLevelRead.FontWeight" Value="Bold" />
+                        <Setter Target="accessLevelWrite.FontWeight" Value="Bold" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <StackPanel VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Button x:Name="accessLevelNone" Content="None" Click="accessLevelNone_Click" />
+                <Button x:Name="accessLevelRead" Content="Read" Click="accessLevelRead_Click" />
+                <Button x:Name="accessLevelWrite" Content="Write" Click="accessLevelWrite_Click" />
+            </StackPanel>
+
+            <TextBlock x:Name="enumStatus"                    
+                   HorizontalAlignment="Center" 
+				   VerticalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</UserControl>
