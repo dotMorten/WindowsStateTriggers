@@ -28,7 +28,7 @@ namespace TestApp.Samples
             this.InitializeComponent();
         }
 
-        private AccessLevel selectedAccessLevel;
+        private AccessLevel selectedAccessLevel = AccessLevel.None;
         public AccessLevel SelectedAccessLevel
         {
             get { return selectedAccessLevel; }

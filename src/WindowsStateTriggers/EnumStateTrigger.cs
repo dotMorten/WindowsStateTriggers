@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace WindowsStateTriggers
 {
@@ -24,11 +25,12 @@ namespace WindowsStateTriggers
             }
             else
             {
-                var currentState = Value.ToString().ToLower();
-                var stateStrings = ActiveValues.ToString();
+                var currentStates = Value.ToString().ToLower().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => s.Trim()).ToList();
+                var stateStrings = ActiveValues.ToString().ToLower().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => s.Trim()).ToList();
 
-                IsActive = stateStrings.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                    .Any(s => s.Trim().ToLower() == currentState);
+                IsActive = currentStates.Intersect(stateStrings).Any();
             }
         }
 
