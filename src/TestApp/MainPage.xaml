@@ -7,67 +7,71 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-	<Grid Background="DimGray">
+    <Grid Background="DimGray">
 
-		<ScrollViewer HorizontalScrollMode="Disabled" ZoomMode="Disabled">
-			<VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="350" Margin="5" >
+        <ScrollViewer HorizontalScrollMode="Disabled" ZoomMode="Disabled">
+            <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="350" Margin="5" >
 
-				<local:SampleContainer Title="DeviceFamilyAdaptiveTrigger">
-					<samples:DeviceFamilySample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="DeviceFamilyAdaptiveTrigger">
+                    <samples:DeviceFamilySample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="NetworkConnectionStateTrigger">
-					<samples:NetworkConnectionSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="NetworkConnectionStateTrigger">
+                    <samples:NetworkConnectionSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="OrientationStateTrigger">
-					<samples:OrientationSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="OrientationStateTrigger">
+                    <samples:OrientationSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="IsTrueStateTrigger / IsFalseStateTrigger">
-					<samples:IsTrueFalseSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="IsTrueStateTrigger / IsFalseStateTrigger">
+                    <samples:IsTrueFalseSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="IsNullOrEmptyStateTrigger">
-					<samples:IsNullOrEmptySample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="IsNullOrEmptyStateTrigger">
+                    <samples:IsNullOrEmptySample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="IsTypePresentStateTrigger">
-					<samples:IsTypePresentSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="IsTypePresentStateTrigger">
+                    <samples:IsTypePresentSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="EqualsStateTrigger">
-					<samples:EqualsSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="EqualsStateTrigger">
+                    <samples:EqualsSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="NotEqualStateTrigger">
-					<samples:NotEqualSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="NotEqualStateTrigger">
+                    <samples:NotEqualSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="CompareStateTrigger">
-					<samples:CompareSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="CompareStateTrigger">
+                    <samples:CompareSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="InputTypeTrigger">
-					<samples:PointerDeviceTypeSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="InputTypeTrigger">
+                    <samples:PointerDeviceTypeSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="CompositeTrigger">
-					<samples:CompositeSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="CompositeTrigger">
+                    <samples:CompositeSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="RegexStateTrigger">
-					<samples:RegexSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="RegexStateTrigger">
+                    <samples:RegexSample />
+                </local:SampleContainer>
 
-				<local:SampleContainer Title="UserHandPreferenceStateTrigger">
-					<samples:HandPreferenceSample />
-				</local:SampleContainer>
+                <local:SampleContainer Title="UserHandPreferenceStateTrigger">
+                    <samples:HandPreferenceSample />
+                </local:SampleContainer>
 
                 <local:SampleContainer Title="UserInteractionModeTrigger">
                     <samples:UserInteractionModeSample />
                 </local:SampleContainer>
+
+                <local:SampleContainer Title="FullScreenModeTrigger">
+                    <samples:FullScreenSample />
+                </local:SampleContainer>
             </VariableSizedWrapGrid>
-		</ScrollViewer>
-	</Grid>
+        </ScrollViewer>
+    </Grid>
 </Page>
