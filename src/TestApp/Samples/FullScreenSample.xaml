@@ -22,7 +22,7 @@
                         <Setter Target="fullScreenMode.Content" Value="Exit full screen" />
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:Name="portrait">
+                <VisualState x:Name="windowed">
                     <VisualState.StateTriggers>
                         <triggers:FullScreenModeTrigger IsFullScreen="false" />
                     </VisualState.StateTriggers>
