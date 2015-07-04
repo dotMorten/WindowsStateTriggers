@@ -1,6 +1,3 @@
-// Copyright (c) Morten Nielsen. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +11,7 @@ using Windows.UI.Xaml;
 namespace WindowsStateTriggers
 {
     /// <summary>
-    /// Trigger for switching when in full screen mode
+    /// Trigger for switching when in full screen mode.
     /// </summary>
 	public class FullScreenModeTrigger : StateTriggerBase, ITriggerValue
     {
@@ -46,7 +43,7 @@ namespace WindowsStateTriggers
         }
 
         /// <summary>
-        /// Gets or sets the Full Screen preference to trigger on.
+        /// Gets or sets the full screen preference to trigger on.
         /// </summary>
         public bool IsFullScreen
         {
