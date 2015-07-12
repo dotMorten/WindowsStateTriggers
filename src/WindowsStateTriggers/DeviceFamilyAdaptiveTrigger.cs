@@ -47,16 +47,16 @@ namespace WindowsStateTriggers
 		{
 			var obj = (DeviceFamilyAdaptiveTrigger)d;
 			var val = (DeviceFamily)e.NewValue;
-            if (deviceFamily == "Windows.Mobile")
-                obj.IsActive = (val == DeviceFamily.Mobile);
-            else if (deviceFamily == "Windows.Desktop")
-                obj.IsActive = (val == DeviceFamily.Desktop);
-            else if (deviceFamily == "Windows.Team")
-                obj.IsActive = (val == DeviceFamily.Team);
-            else if (deviceFamily == "Windows.IoT")
-                obj.IsActive = (val == DeviceFamily.IoT);
-            else
-                obj.IsActive = (val == DeviceFamily.Unknown);
+			if (deviceFamily == "Windows.Mobile")
+				obj.IsActive = (val == DeviceFamily.Mobile);
+			else if (deviceFamily == "Windows.Desktop")
+				obj.IsActive = (val == DeviceFamily.Desktop);
+			else if (deviceFamily == "Windows.Team")
+				obj.IsActive = (val == DeviceFamily.Team);
+			else if (deviceFamily == "Windows.IoT")
+				obj.IsActive = (val == DeviceFamily.IoT);
+			else
+				obj.IsActive = (val == DeviceFamily.Unknown);
 		}
 
 		#region ITriggerValue

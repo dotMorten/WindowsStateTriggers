@@ -8,49 +8,49 @@
     xmlns:triggers="using:WindowsStateTriggers"
 	mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <VisualStateManager.VisualStateGroups>
+		<VisualStateManager.VisualStateGroups>
 
-            <VisualStateGroup >
-                <VisualState x:Name="desktop">
-                    <VisualState.StateTriggers>
-                        <triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Desktop" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="greeting.Text" Value="Hello Windows Desktop!" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="mobile">
-                    <VisualState.StateTriggers>
-                        <triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Mobile" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="greeting.Text" Value="Hello Windows Mobile!" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="team">
-                    <VisualState.StateTriggers>
-                        <triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Team" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="greeting.Text" Value="Hello Windows Team!" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="iot">
-                    <VisualState.StateTriggers>
-                        <triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="IoT" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="greeting.Text" Value="Hello Windows IoT Core!" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+			<VisualStateGroup >
+				<VisualState x:Name="desktop">
+					<VisualState.StateTriggers>
+						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Desktop" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="greeting.Text" Value="Hello Windows Desktop!" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="mobile">
+					<VisualState.StateTriggers>
+						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Mobile" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="greeting.Text" Value="Hello Windows Mobile!" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="team">
+					<VisualState.StateTriggers>
+						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Team" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="greeting.Text" Value="Hello Windows Team!" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="iot">
+					<VisualState.StateTriggers>
+						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="IoT" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="greeting.Text" Value="Hello Windows IoT Core!" />
+					</VisualState.Setters>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
 
-        <TextBlock x:Name="greeting" Foreground="Black"
+		<TextBlock x:Name="greeting" Foreground="Black"
                    Text="Unknown Platform"
                    HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-    </Grid>
+	</Grid>
 </UserControl>
