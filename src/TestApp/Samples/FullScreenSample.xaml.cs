@@ -28,15 +28,15 @@ namespace TestApp.Samples
 			this.InitializeComponent();
 		}
 
-        private void fullScreenMode_Click(object sender, RoutedEventArgs e)
-        {
-            var view = ApplicationView.GetForCurrentView();
-            var isFullScreenMode = view.IsFullScreenMode;
+		private void fullScreenMode_Click(object sender, RoutedEventArgs e)
+		{
+			var view = ApplicationView.GetForCurrentView();
+			var isFullScreenMode = view.IsFullScreenMode;
 
-            if (isFullScreenMode)
-                view.ExitFullScreenMode();
-            else
-                view.TryEnterFullScreenMode();
-        }
-    }
+			if (isFullScreenMode)
+				view.ExitFullScreenMode();
+			else
+				view.TryEnterFullScreenMode();
+		}
+	}
 }
