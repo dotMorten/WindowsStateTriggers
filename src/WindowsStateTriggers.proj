@@ -1,0 +1,108 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+
+
+  <!-- Settings -->
+
+  <PropertyGroup>
+    <SolutionName Condition="'$(SolutionName)' == ''">WindowsStateTriggers.sln</SolutionName>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+    <Platform Condition="'$(Platform)' == ''">x86</Platform>
+    <ParallelizeTests Condition="'$(ParallelizeTests)' == ''">true</ParallelizeTests>
+    <TrackFileAccess>false</TrackFileAccess>
+    <SolutionDir Condition="'$(SolutionDir)' == '' Or '$(SolutionDir)' == '*Undefined*'">$(MSBuildProjectDirectory)</SolutionDir>
+    <NuGetExePath Condition="'$(NuGetExePath)' == ''">$(SolutionDir)\.nuget\nuget.exe</NuGetExePath>
+    <RequestedVerbosity Condition=" '$(RequestedVerbosity)' == '' ">normal</RequestedVerbosity>
+  </PropertyGroup>
+  <ItemGroup>
+    <NuspecFiles Include="src\*.nuspec" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(PackageSources)' == '' ">
+    <PackageSource Include="https://nuget.org/api/v2/" />
+  </ItemGroup>
+
+  <!-- Build server targets -->
+
+  <Target Name="CI" DependsOnTargets="DisableParallelization;Clean;PackageRestore;Build;Packages" />
+
+  <!-- Individual targets -->
+
+  <Target Name="DisableParallelization">
+    <PropertyGroup>
+      <ParallelizeTests>false</ParallelizeTests>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="Clean">
+    <ItemGroup>
+      <CleanFileList Include="*.html;*.xml;*.nupkg;.nuget\NuGet.exe"/>
+    </ItemGroup>
+    <MSBuild
+        Projects="$(SolutionName)"
+        Targets="Clean"
+        Properties="Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+    <Delete Files="@(CleanFileList)"/>
+    <RemoveDir Directories="@(CleanFolderList)" ContinueOnError="true"/>
+  </Target>
+
+  <Target Name="PackageRestore" DependsOnTargets="_DownloadNuGet">
+    <Message Text="Restoring NuGet packages..." Importance="High" />    
+    <Exec Command="&quot;$(NuGetExePath)&quot; restore &quot;$(SolutionDir)\$(SolutionName)&quot; -NonInteractive -Source @(PackageSource) -Verbosity quiet" />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="PackageRestore">
+  <!--  <MSBuild
+        Projects="$(SolutionName)"
+        Targets="Build"
+        Properties="Configuration=$(Configuration);Platform=$(Platform);TrackFileAccess=$(TrackFileAccess)"/>
+
+ -->
+  </Target>
+
+  <Target Name='Packages'>
+    <Exec Command='"$(NuGetExePath)" pack %(NuspecFiles.Identity) -NoPackageAnalysis -NonInteractive -Verbosity quiet' />
+  </Target>
+
+  <Target Name="PushNuGet" DependsOnTargets="_DownloadNuGet">
+    <ItemGroup>
+      <NupkgFiles Include="*.nupkg" Exclude="*.symbols*.nupkg" />
+    </ItemGroup>
+    <Exec Command='"$(NuGetExePath)" push %(NupkgFiles.Identity) -NonInteractive' />
+  </Target>
+
+  <Target Name="_DownloadNuGet">
+    <MakeDir Directories="$(SolutionDir)\.nuget" />
+    <DownloadNuGet OutputFilename="$(NuGetExePath)" Condition="!Exists('$(NuGetExePath)')" />
+  </Target>
+
+  <UsingTask TaskName="DownloadNuGet" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <OutputFilename ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Core" />
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.Net" />
+      <Using Namespace="Microsoft.Build.Framework" />
+      <Using Namespace="Microsoft.Build.Utilities" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          try {
+              OutputFilename = Path.GetFullPath(OutputFilename);
+
+              Log.LogMessage("Downloading latest version of NuGet.exe...");
+              WebClient webClient = new WebClient();
+              webClient.DownloadFile("https://nuget.org/nuget.exe", OutputFilename);
+
+              return true;
+          }
+          catch (Exception ex) {
+              Log.LogErrorFromException(ex);
+              return false;
+          }
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+</Project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>WindowsStateTriggers</id>
+        <version>1.0.0-beta1</version>
+        <title />
+        <authors>Morten Nielsen</authors>
+        <owners />
+        <licenseUrl>https://raw.githubusercontent.com/dotMorten/WindowsStateTriggers/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/dotMorten/WindowsStateTriggers</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>StateTriggers for use with the Windows 10 Visual State Manager</description>
+        <releaseNotes></releaseNotes>
+        <copyright>© Morten Nielsen 2015</copyright>
+        <language>en-US</language>
+        <tags>statetrigger adaptive uwp</tags>
+    </metadata>
+    <files>
+      
+      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.dll" target="lib\win81\WindowsStateTriggers.dll" />
+      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pdb" target="lib\win81\WindowsStateTriggers.pdb" />
+      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pri" target="lib\win81\WindowsStateTriggers.pri" />
+      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.xml" target="lib\win81\WindowsStateTriggers.xml" />
+        
+     
+      <!-- Source -->
+      <file src="WindowsStateTriggers\**\*.cs" target="src" exclude="_ReSharper.*\**\*.*;packages\**\*.*;**\Debug\**\*.*"/>       
+      
+    </files>
+</package>
