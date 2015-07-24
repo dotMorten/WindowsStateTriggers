@@ -182,3 +182,4 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 project.lock.json
+src/.vs/
