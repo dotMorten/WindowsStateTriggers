@@ -26,7 +26,7 @@
 				</VisualState>
 				<VisualState x:Name="OnlyCheckOne">
 					<VisualState.StateTriggers>
-						<triggers:CompositeStateTrigger Operator="Xor">
+						<triggers:CompositeStateTrigger Operator="OnlyOne">
 							<triggers:CompareStateTrigger Value="{x:Bind chb1.IsChecked.Value, Mode=OneWay}" CompareTo="True" Comparison="Equal" />
 							<triggers:CompareStateTrigger Value="{x:Bind chb2.IsChecked.Value, Mode=OneWay}" CompareTo="True" Comparison="Equal" />
 							<triggers:CompareStateTrigger Value="{x:Bind chb3.IsChecked.Value, Mode=OneWay}" CompareTo="True" Comparison="Equal" />
