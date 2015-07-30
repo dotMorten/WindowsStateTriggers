@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>WindowsStateTriggers</id>
-        <version>1.0.0</version>
+        <version>1.0.2</version>
         <title />
         <authors>Morten Nielsen</authors>
         <owners />
@@ -21,8 +21,8 @@
       <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pdb" target="lib\uap10.0\WindowsStateTriggers.pdb" />
       <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pri" target="lib\uap10.0\WindowsStateTriggers.pri" />
       <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.xml" target="lib\uap10.0\WindowsStateTriggers.xml" />
-        
-     
+      <file src="WindowsStateTriggers\Properties\WindowsStateTriggers.rd.xml" target="lib\uap10.0\WindowsStateTriggers\Properties\WindowsStateTriggers.rd.xml" />
+             
       <!-- Source -->
       <file src="WindowsStateTriggers\**\*.cs" target="src" exclude="_ReSharper.*\**\*.*;packages\**\*.*;**\Debug\**\*.*"/>       
       
