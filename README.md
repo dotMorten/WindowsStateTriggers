@@ -1,12 +1,16 @@
 # WindowsStateTriggers
 A collection of custom visual state triggers
 
+Get it on nuget:
+```
+   PM> Install-Package WindowsStateTriggers 
+```
 
 See more information on my blog:
 http://www.sharpgis.net/post/2015/03/24/Using-Custom-Visual-State-Triggers
 
 ##### Triggers available:
-- `DeviceFamilyAdaptiveTrigger`: Trigger based on the device family (Desktop, Mobile or Team)
+- `DeviceFamilyStateTrigger`: Trigger based on the device family (Desktop, Mobile, IoT or Team)
 - `NetworkConnectionStateTrigger`: Trigger if internet connection is available or not
 - `OrientationStateTrigger`: Trigger based on portrait/landscape mode
 - `IsTrueStateTrigger`: Trigger if a value is true - REMOVED ! use `StateTrigger` and bind to `IsActive`
