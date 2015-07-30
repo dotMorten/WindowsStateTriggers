@@ -45,7 +45,15 @@
 						<Setter Target="greeting.Text" Value="Hello Windows IoT Core!" />
 					</VisualState.Setters>
 				</VisualState>
-			</VisualStateGroup>
+                <VisualState x:Name="xbox">
+                    <VisualState.StateTriggers>
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="Xbox" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="greeting.Text" Value="Hello Xbox!" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
 
 		<TextBlock x:Name="greeting" Foreground="Black"

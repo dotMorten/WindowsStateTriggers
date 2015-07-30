@@ -55,8 +55,10 @@ namespace WindowsStateTriggers
 				obj.IsActive = (val == DeviceFamily.Team);
 			else if (deviceFamily == "Windows.IoT")
 				obj.IsActive = (val == DeviceFamily.IoT);
-			else
-				obj.IsActive = (val == DeviceFamily.Unknown);
+            else if (deviceFamily == "Windows.Xbox")
+                obj.IsActive = (val == DeviceFamily.Xbox);
+            else
+                obj.IsActive = (val == DeviceFamily.Unknown);
 		}
 
 		#region ITriggerValue
@@ -114,6 +116,10 @@ namespace WindowsStateTriggers
 		/// <summary>
 		/// Windows IoT
 		/// </summary>
-		IoT = 4
-	}
+		IoT = 4,
+        /// <summary>
+        /// Xbox
+        /// </summary>
+        Xbox = 4
+    }
 }
