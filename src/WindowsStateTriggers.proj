@@ -50,15 +50,13 @@
   </Target>
 
   <Target Name="Build" DependsOnTargets="PackageRestore">
-  <!--  <MSBuild
+    <MSBuild
         Projects="$(SolutionName)"
         Targets="Build"
-        Properties="Configuration=$(Configuration);Platform=$(Platform);TrackFileAccess=$(TrackFileAccess)"/>
-
- -->
+        Properties="Configuration=$(Configuration);Platform=$(Platform);TrackFileAccess=$(TrackFileAccess)"/> 
   </Target>
 
-  <Target Name='Packages'>
+  <Target Name='Packages' DependsOnTargets="Build">
     <Exec Command='"$(NuGetExePath)" pack %(NuspecFiles.Identity) -NoPackageAnalysis -NonInteractive -Verbosity quiet' />
   </Target>
 
