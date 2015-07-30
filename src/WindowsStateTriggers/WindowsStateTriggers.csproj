@@ -133,7 +133,7 @@
     <Compile Include="NetworkConnectionStateTrigger.cs" />
     <Compile Include="OrientationStateTrigger.cs" />
     <Compile Include="IsTypePresentStateTrigger.cs" />
-    <Compile Include="DeviceFamilyAdaptiveTrigger.cs" />
+    <Compile Include="DeviceFamilyStateTrigger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInteractionModeTrigger.cs" />
     <Compile Include="WeakEventListener.cs" />

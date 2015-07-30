@@ -15,7 +15,7 @@
 			<VisualStateGroup >
 				<VisualState x:Name="desktop">
 					<VisualState.StateTriggers>
-						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Desktop" />
+						<triggers:DeviceFamilyStateTrigger DeviceFamily="Desktop" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="greeting.Text" Value="Hello Windows Desktop!" />
@@ -23,7 +23,7 @@
 				</VisualState>
 				<VisualState x:Name="mobile">
 					<VisualState.StateTriggers>
-						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Mobile" />
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="Mobile" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="greeting.Text" Value="Hello Windows Mobile!" />
@@ -31,7 +31,7 @@
 				</VisualState>
 				<VisualState x:Name="team">
 					<VisualState.StateTriggers>
-						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Team" />
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="Team" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="greeting.Text" Value="Hello Windows Team!" />
@@ -39,7 +39,7 @@
 				</VisualState>
 				<VisualState x:Name="iot">
 					<VisualState.StateTriggers>
-						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="IoT" />
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="IoT" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="greeting.Text" Value="Hello Windows IoT Core!" />

@@ -10,19 +10,19 @@ namespace WindowsStateTriggers
 	/// <summary>
 	/// Trigger for switching between Windows and Windows Phone
 	/// </summary>
-	public class DeviceFamilyAdaptiveTrigger : StateTriggerBase, ITriggerValue
+	public class DeviceFamilyStateTrigger : StateTriggerBase, ITriggerValue
 	{
 		private static string deviceFamily;
 
-		static DeviceFamilyAdaptiveTrigger()
+		static DeviceFamilyStateTrigger()
 		{
 			deviceFamily = Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily;
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DeviceFamilyAdaptiveTrigger"/> class.
+		/// Initializes a new instance of the <see cref="DeviceFamilyStateTrigger"/> class.
 		/// </summary>
-		public DeviceFamilyAdaptiveTrigger()
+		public DeviceFamilyStateTrigger()
 		{
 		}
 
@@ -40,12 +40,12 @@ namespace WindowsStateTriggers
 		/// Identifies the <see cref="DeviceFamily"/> DependencyProperty
 		/// </summary>
 		public static readonly DependencyProperty DeviceFamilyProperty =
-			DependencyProperty.Register("DeviceFamily", typeof(DeviceFamily), typeof(DeviceFamilyAdaptiveTrigger),
+			DependencyProperty.Register("DeviceFamily", typeof(DeviceFamily), typeof(DeviceFamilyStateTrigger),
 			new PropertyMetadata(DeviceFamily.Unknown, OnDeviceTypePropertyChanged));
 
 		private static void OnDeviceTypePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			var obj = (DeviceFamilyAdaptiveTrigger)d;
+			var obj = (DeviceFamilyStateTrigger)d;
 			var val = (DeviceFamily)e.NewValue;
 			if (deviceFamily == "Windows.Mobile")
 				obj.IsActive = (val == DeviceFamily.Mobile);
