@@ -67,6 +67,10 @@
                 <local:SampleContainer Title="UserInteractionModeTrigger">
                     <samples:UserInteractionModeSample />
                 </local:SampleContainer>
+
+                <local:SampleContainer Title="FullScreenModeTrigger">
+                    <samples:FullScreenSample />
+                </local:SampleContainer>
             </VariableSizedWrapGrid>
 		</ScrollViewer>
 	</Grid>
