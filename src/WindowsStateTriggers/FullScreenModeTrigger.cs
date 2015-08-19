@@ -37,35 +37,30 @@ namespace WindowsStateTriggers
 			UpdateTrigger(sender.IsFullScreenMode);
 		}
 
-		private void UpdateTrigger(bool isFullScreen)
-		{
-			IsActive = (isFullScreen == IsFullScreen);
-		}
-
+		private bool isFullScreen;
 		/// <summary>
 		/// Gets or sets the full screen preference to trigger on.
 		/// </summary>
 		public bool IsFullScreen
 		{
-			get { return (bool)GetValue(IsFullScreenProperty); }
-			set { SetValue(IsFullScreenProperty, value); }
+			get
+			{
+				return isFullScreen;
+			}
+			set
+			{
+				isFullScreen = value;
+				if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+				{
+					var isFullScreenMode = ApplicationView.GetForCurrentView().IsFullScreenMode;
+					UpdateTrigger(isFullScreenMode);
+				}
+			}
 		}
 
-		/// <summary>
-		/// Identifies the <see cref="IsFullScreen"/> parameter.
-		/// </summary>
-		public static readonly DependencyProperty IsFullScreenProperty =
-			DependencyProperty.Register("IsFullScreen", typeof(bool), typeof(FullScreenModeTrigger),
-			new PropertyMetadata(false, OnIsFullScreenPropertyChanged));
-
-		private static void OnIsFullScreenPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+		private void UpdateTrigger(bool isFullScreenMode)
 		{
-			var obj = (FullScreenModeTrigger)d;
-			if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
-			{
-				var isFullScreen = ApplicationView.GetForCurrentView().IsFullScreenMode;
-				obj.UpdateTrigger(isFullScreen);
-			}
+			IsActive = (IsFullScreen == isFullScreenMode);
 		}
 
 		#region ITriggerValue

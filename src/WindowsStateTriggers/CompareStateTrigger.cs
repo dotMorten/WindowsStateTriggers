@@ -92,7 +92,15 @@ namespace WindowsStateTriggers
 				//Let's see if we can convert - for perf reasons though, try and use the right type in and out
 				if (v1.GetType() != v2.GetType())
 				{
-					if (v1 is IComparable)
+                    if(v1 is Enum)
+                    {
+                        v2 = Enum.Parse(v1.GetType(), v2.ToString());
+                    }
+                    else if (v2 is Enum)
+                    {
+                        v1 = Enum.Parse(v2.GetType(), v1.ToString());
+                    }
+                    else if (v1 is IComparable)
 					{
 						v2 = System.Convert.ChangeType(v2, v1.GetType(), CultureInfo.InvariantCulture);
 					}

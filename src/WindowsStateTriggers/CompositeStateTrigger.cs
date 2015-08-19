@@ -48,7 +48,7 @@ namespace WindowsStateTriggers
 				bool result = !GetValues().Where(t => !t).Any();
 				IsActive = (result);
 			}
-			else if (Operator == LogicalOperator.Xor)
+			else if (Operator == LogicalOperator.OnlyOne)
 			{
 				bool result = GetValues().Where(t => t).Count() == 1;
 				IsActive = (result);
@@ -288,9 +288,9 @@ namespace WindowsStateTriggers
 		/// </summary>
 		Or,
 		/// <summary>
-		/// Exclusive-Or (only one can be active)
+		/// Only one can be active
 		/// </summary>
-		Xor
+		OnlyOne
 	}
 	/// <summary>
 	/// Collection for the <see cref="CompositeStateTrigger"/>.

@@ -8,14 +8,14 @@
     xmlns:triggers="using:WindowsStateTriggers"
 	mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 		<VisualStateManager.VisualStateGroups>
 
 			<VisualStateGroup >
 				<VisualState x:Name="desktop">
 					<VisualState.StateTriggers>
-						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Desktop" />
+						<triggers:DeviceFamilyStateTrigger DeviceFamily="Desktop" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="greeting.Text" Value="Hello Windows Desktop!" />
@@ -23,7 +23,7 @@
 				</VisualState>
 				<VisualState x:Name="mobile">
 					<VisualState.StateTriggers>
-						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Mobile" />
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="Mobile" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="greeting.Text" Value="Hello Windows Mobile!" />
@@ -31,15 +31,31 @@
 				</VisualState>
 				<VisualState x:Name="team">
 					<VisualState.StateTriggers>
-						<triggers:DeviceFamilyAdaptiveTrigger DeviceFamily="Team" />
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="Team" />
 					</VisualState.StateTriggers>
 					<VisualState.Setters>
 						<Setter Target="greeting.Text" Value="Hello Windows Team!" />
 					</VisualState.Setters>
 				</VisualState>
-			</VisualStateGroup>
+				<VisualState x:Name="iot">
+					<VisualState.StateTriggers>
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="IoT" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="greeting.Text" Value="Hello Windows IoT Core!" />
+					</VisualState.Setters>
+				</VisualState>
+                <VisualState x:Name="xbox">
+                    <VisualState.StateTriggers>
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="Xbox" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="greeting.Text" Value="Hello Xbox!" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
-		
+
 		<TextBlock x:Name="greeting" Foreground="Black"
                    Text="Unknown Platform"
                    HorizontalAlignment="Center" VerticalAlignment="Center" />
