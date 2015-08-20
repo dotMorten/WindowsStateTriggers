@@ -117,9 +117,9 @@ namespace WindowsStateTriggers
 		/// Windows IoT
 		/// </summary>
 		IoT = 4,
-        /// <summary>
-        /// Xbox
-        /// </summary>
-        Xbox = 4
-    }
+		/// <summary>
+		/// Xbox
+		/// </summary>
+		Xbox = 5
+	}
 }
