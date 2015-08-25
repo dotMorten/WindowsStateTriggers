@@ -11,8 +11,8 @@ namespace WindowsStateTriggers
         /// <summary>
         /// The hosted required property
         /// </summary>
-        public static readonly DependencyProperty HostedRequiredProperty = DependencyProperty.Register(
-            "HostedRequired", typeof (bool), typeof (HostedTrigger), new PropertyMetadata(default(bool), OnHostedRequiredChanged));
+        public static readonly DependencyProperty IsHostedProperty = DependencyProperty.Register(
+            "IsHosted", typeof (bool), typeof (HostedTrigger), new PropertyMetadata(default(bool), OnHostedRequiredChanged));
 
         /// <summary>
         /// Gets or sets a value indicating whether [hosted required].
@@ -20,10 +20,10 @@ namespace WindowsStateTriggers
         /// <value>
         ///   <c>true</c> if [hosted required]; otherwise, <c>false</c>.
         /// </value>
-        public bool HostedRequired
+        public bool IsHosted
         {
-            get { return (bool) GetValue(HostedRequiredProperty); }
-            set { SetValue(HostedRequiredProperty, value); }
+            get { return (bool) GetValue(IsHostedProperty); }
+            set { SetValue(IsHostedProperty, value); }
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace WindowsStateTriggers
         private void UpdateStateTrigger()
         {
             var isHosted = CoreApplication.GetCurrentView().IsHosted;
-            base.SetActive(isHosted && HostedRequired);
+            base.SetActive(isHosted && IsHosted);
         }
     }
 }
