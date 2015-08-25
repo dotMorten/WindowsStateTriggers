@@ -6,23 +6,20 @@ namespace WindowsStateTriggers
     /// <summary>
     /// A state trigger for determining if the app is in a hosted state (for example, if share is being used)
     /// </summary>
-    public class HostedTrigger : StateTriggerBase
+    public class HostedStateTrigger : StateTriggerBase
     {
         /// <summary>
         /// The hosted required property
         /// </summary>
         public static readonly DependencyProperty IsHostedProperty = DependencyProperty.Register(
-            "IsHosted", typeof (bool), typeof (HostedTrigger), new PropertyMetadata(default(bool), OnHostedRequiredChanged));
+            "IsHosted", typeof (HostedState), typeof (HostedStateTrigger), new PropertyMetadata(HostedState.Unknown, OnHostedRequiredChanged));
 
         /// <summary>
-        /// Gets or sets a value indicating whether [hosted required].
+        /// Gets or sets the is hosted value.
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if [hosted required]; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsHosted
+        public HostedState IsHosted
         {
-            get { return (bool) GetValue(IsHostedProperty); }
+            get { return (HostedState) GetValue(IsHostedProperty); }
             set { SetValue(IsHostedProperty, value); }
         }
 
@@ -33,7 +30,7 @@ namespace WindowsStateTriggers
         /// <param name="e">The <see cref="Windows.UI.Xaml.DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
         private static void OnHostedRequiredChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            (sender as HostedTrigger)?.UpdateStateTrigger();
+            (sender as HostedStateTrigger)?.UpdateStateTrigger();
         }
 
         /// <summary>
@@ -42,7 +39,35 @@ namespace WindowsStateTriggers
         private void UpdateStateTrigger()
         {
             var isHosted = CoreApplication.GetCurrentView().IsHosted;
-            base.SetActive(isHosted && IsHosted);
+            if (isHosted)
+            {
+                SetActive(IsHosted == HostedState.Hosted);
+            }
+            else
+            {
+                SetActive(IsHosted == HostedState.NotHosted);
+            }
+        }
+
+        /// <summary>
+        /// Hosted State enum
+        /// </summary>
+        public enum HostedState
+        {
+            /// <summary>
+            /// The unknown state
+            /// </summary>
+            Unknown,
+
+            /// <summary>
+            /// The hosted state
+            /// </summary>
+            Hosted,
+
+            /// <summary>
+            /// The not hosted state
+            /// </summary>
+            NotHosted
         }
     }
 }

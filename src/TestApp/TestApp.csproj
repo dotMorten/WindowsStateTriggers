@@ -103,6 +103,9 @@
     <Compile Include="Samples\CompositeSample.xaml.cs">
       <DependentUpon>CompositeSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\IsHostedSample.xaml.cs">
+      <DependentUpon>IsHostedSample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\IsNullOrEmptySample.xaml.cs">
       <DependentUpon>IsNullOrEmptySample.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
     <Page Include="Samples\CompositeSample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\IsHostedSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\IsNullOrEmptySample.xaml">
       <Generator>MSBuild:Compile</Generator>

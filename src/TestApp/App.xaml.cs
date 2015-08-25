@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using TestApp.Samples;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=402347&clcid=0x409
 
@@ -23,12 +25,12 @@ namespace TestApp
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     sealed partial class App : Application
-	{
-		/// <summary>
-		/// Initializes the singleton application object.  This is the first line of authored code
-		/// executed, and as such is the logical equivalent of main() or WinMain().
-		/// </summary>
-		public App()
+    {
+        /// <summary>
+        /// Initializes the singleton application object.  This is the first line of authored code
+        /// executed, and as such is the logical equivalent of main() or WinMain().
+        /// </summary>
+        public App()
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
@@ -80,6 +82,41 @@ namespace TestApp
             }
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        protected override async void OnShareTargetActivated(ShareTargetActivatedEventArgs args)
+        {
+            var shareOperation = args.ShareOperation;
+            var text = string.Empty;
+            if (shareOperation.Data.Contains(StandardDataFormats.Text))
+            {
+                text = await shareOperation.Data.GetTextAsync();
+            }
+            else if (shareOperation.Data.Contains(StandardDataFormats.ApplicationLink))
+            {
+                var link = await shareOperation.Data.GetApplicationLinkAsync();
+                text = link.ToString();
+            }
+            else if (shareOperation.Data.Contains(StandardDataFormats.Html))
+            {
+                text = await shareOperation.Data.GetHtmlFormatAsync();
+            }
+            else if (shareOperation.Data.Contains(StandardDataFormats.WebLink))
+            {
+                var uri = await shareOperation.Data.GetWebLinkAsync();
+                text = uri.ToString();
+            }
+
+            var frame = new Frame();
+            frame.Navigate(typeof (IsHostedSample));
+
+            var page = frame.Content as IsHostedSample;
+            page?.SetShareText(text);
+
+            Window.Current.Content = frame;
+            Window.Current.Activate();
+
+            base.OnShareTargetActivated(args);
         }
 
         /// <summary>

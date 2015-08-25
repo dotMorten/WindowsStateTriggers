@@ -124,7 +124,7 @@
     <Compile Include="CompareStateTrigger.cs" />
     <Compile Include="CompositeStateTrigger.cs" />
     <Compile Include="FullScreenModeTrigger.cs" />
-    <Compile Include="HostedTrigger.cs" />
+    <Compile Include="HostedStateTrigger.cs" />
     <Compile Include="UserHandPreferenceStateTrigger.cs" />
     <Compile Include="RegexStateTrigger.cs" />
     <Compile Include="InputTypeTrigger.cs" />
