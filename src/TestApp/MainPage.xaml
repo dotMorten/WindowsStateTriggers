@@ -11,7 +11,7 @@
 
 		<ScrollViewer HorizontalScrollMode="Disabled" ZoomMode="Disabled">
 			<VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="350" Margin="5" >
-
+                
 				<local:SampleContainer Title="DeviceFamilyStateTrigger">
 					<samples:DeviceFamilySample />
 				</local:SampleContainer>
@@ -70,6 +70,10 @@
 
                 <local:SampleContainer Title="FullScreenModeTrigger">
                     <samples:FullScreenSample />
+                </local:SampleContainer>
+                
+                <local:SampleContainer Title="HostedTrigger">
+                    <samples:IsHostedSample />
                 </local:SampleContainer>
             </VariableSizedWrapGrid>
 		</ScrollViewer>
