@@ -9,10 +9,10 @@ namespace WindowsStateTriggers
     public class HostedStateTrigger : StateTriggerBase
     {
         /// <summary>
-        /// The hosted required property
+        /// Identifies the <see cref="IsHosted" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsHostedProperty = DependencyProperty.Register(
-            "IsHosted", typeof (HostedState), typeof (HostedStateTrigger), new PropertyMetadata(HostedState.Unknown, OnHostedRequiredChanged));
+            "IsHosted", typeof (HostedState), typeof (HostedStateTrigger), new PropertyMetadata(HostedState.Unknown, OnIsHostedRequiredChanged));
 
         /// <summary>
         /// Gets or sets the is hosted value.
@@ -24,11 +24,11 @@ namespace WindowsStateTriggers
         }
 
         /// <summary>
-        /// Called when [hosted required changed].
+        /// Called when the IsHosted depenedency property changed.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="Windows.UI.Xaml.DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
-        private static void OnHostedRequiredChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        private static void OnIsHostedRequiredChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             (sender as HostedStateTrigger)?.UpdateStateTrigger();
         }
