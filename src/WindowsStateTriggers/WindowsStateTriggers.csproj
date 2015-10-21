@@ -121,7 +121,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompositableAdaptiveTrigger.cs" />
+    <Compile Include="AdaptiveTrigger.cs" />
     <Compile Include="CompareStateTrigger.cs" />
     <Compile Include="CompositeStateTrigger.cs" />
     <Compile Include="FullScreenModeTrigger.cs" />

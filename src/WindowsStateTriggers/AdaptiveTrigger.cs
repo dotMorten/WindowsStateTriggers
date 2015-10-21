@@ -11,21 +11,30 @@ using Windows.UI.Xaml;
 namespace WindowsStateTriggers
 {
     /// <summary>
-    /// Extends the <see cref="AdaptiveTrigger"/> functionality with 
+    /// Extends the <see cref="Windows.UI.Xaml.AdaptiveTrigger"/> functionality with 
     /// <see cref="ITriggerValue"/> interface implementation 
     /// for <see cref="CompositeStateTrigger"/> usage
     /// </summary>
-    public class CompositableAdaptiveTrigger : AdaptiveTrigger, ITriggerValue
+    public class AdaptiveTrigger : Windows.UI.Xaml.AdaptiveTrigger, ITriggerValue
     {
         /// <summary>
-		/// Initializes a new instance of the <see cref="FullScreenModeTrigger"/> class.
+		/// Initializes a new instance of the <see cref="AdaptiveTrigger"/> class.
 		/// </summary>
-        public CompositableAdaptiveTrigger()
+        public AdaptiveTrigger()
         {
             this.RegisterPropertyChangedCallback(MinWindowHeightProperty, OnMinWindowHeightPropertyChanged);
             this.RegisterPropertyChangedCallback(MinWindowWidthProperty, OnMinWindowWidthPropertyChanged);
-
-            CoreApplication.GetCurrentView().CoreWindow.SizeChanged += OnCoreWindowOnSizeChanged;
+            
+            var window = CoreApplication.GetCurrentView()?.CoreWindow;
+            if (window != null)
+            {
+                var weakEvent = new WeakEventListener<AdaptiveTrigger, CoreWindow, WindowSizeChangedEventArgs>(this)
+                {
+                    OnEventAction = (instance, s, e) => OnCoreWindowOnSizeChanged(s, e),
+                    OnDetachAction = (instance, weakEventListener) => window.SizeChanged -= weakEventListener.OnEvent
+                };
+                window.SizeChanged += weakEvent.OnEvent;
+            }
         }
 
         private void OnCoreWindowOnSizeChanged(CoreWindow sender, WindowSizeChangedEventArgs args)
@@ -35,12 +44,20 @@ namespace WindowsStateTriggers
 
         private void OnMinWindowHeightPropertyChanged(DependencyObject sender, DependencyProperty dp)
         {
-            IsActive = CoreApplication.GetCurrentView().CoreWindow.Bounds.Height >= MinWindowHeight;
+            var window = CoreApplication.GetCurrentView()?.CoreWindow;
+            if (window != null)
+            {
+                IsActive = window.Bounds.Height >= MinWindowHeight;
+            }
         }
 
         private void OnMinWindowWidthPropertyChanged(DependencyObject sender, DependencyProperty dp)
         {
-            IsActive = CoreApplication.GetCurrentView().CoreWindow.Bounds.Width >= MinWindowWidth;
+            var window = CoreApplication.GetCurrentView()?.CoreWindow;
+            if (window != null)
+            {
+                IsActive = window.Bounds.Width >= MinWindowWidth;
+            }
         }
 
         #region ITriggerValue
