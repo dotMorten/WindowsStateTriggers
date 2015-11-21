@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.UI.Xaml;
 
@@ -77,15 +78,18 @@ namespace WindowsStateTriggers
 	    {
 	        if (deviceFamily == Mobile)
 	        {
-	            // This is where we check for continuum, because if the device family is mobile,
-	            // but screensize is greater than 6", then it means we are in continuum as the largest
-	            // screensize for a mobile device is 6"
-	            // If this is the case, then we want to force the device family to think it's the 
-	            // desktop so that UIs based on desktop get shown.
-	            var size = DisplayInformation.GetForCurrentView().DiagonalSizeInInches;
-	            if (size.HasValue && size.Value > MaximumScreenSizeForMobile)
+	            if (ApiInformation.IsPropertyPresent("DisplayInformation", "DiagonalSizeInInches"))
 	            {
-	                deviceFamily = Desktop;
+	                // This is where we check for continuum, because if the device family is mobile,
+	                // but screensize is greater than 6", then it means we are in continuum as the largest
+	                // screensize for a mobile device is 6"
+	                // If this is the case, then we want to force the device family to think it's the 
+	                // desktop so that UIs based on desktop get shown.
+	                var size = DisplayInformation.GetForCurrentView().DiagonalSizeInInches;
+	                if (size.HasValue && size.Value > MaximumScreenSizeForMobile)
+	                {
+	                    deviceFamily = Desktop;
+	                }
 	            }
 	        }
 
