@@ -47,42 +47,63 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public static readonly DependencyProperty DeviceFamilyProperty =
 			DependencyProperty.Register("DeviceFamily", typeof(DeviceFamily), typeof(DeviceFamilyStateTrigger),
-			new PropertyMetadata(DeviceFamily.Unknown, OnDeviceTypePropertyChanged));
+			new PropertyMetadata(DeviceFamily.Unknown, OnPropertyChanged));
 
-        private static void OnDeviceTypePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        /// <summary>
+        /// The maximum screen size for mobile property
+        /// </summary>
+        public static readonly DependencyProperty MaximumScreenSizeForMobileProperty = DependencyProperty.Register(
+	        "MaximumScreenSizeForMobile", typeof (double), typeof (DeviceFamilyStateTrigger), new PropertyMetadata(6d, OnPropertyChanged));
+
+        /// <summary>
+        /// Gets or sets the maximum screen size for mobile. This is used for checking if in Continuum
+        /// </summary>
+        /// <value>
+        /// The maximum screen size for mobile.
+        /// </value>
+        public double MaximumScreenSizeForMobile
+	    {
+	        get { return (double) GetValue(MaximumScreenSizeForMobileProperty); }
+	        set { SetValue(MaximumScreenSizeForMobileProperty, value); }
+	    }
+
+        private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			var obj = (DeviceFamilyStateTrigger)d;
-			var val = (DeviceFamily)e.NewValue;
-
-		    if (deviceFamily == Mobile)
-		    {
-                // This is where we check for continuum, because if the device family is mobile,
-                // but screensize is greater than 6", then it means we are in continuum as the largest
-                // screensize for a mobile device is 6"
-                // If this is the case, then we want to force the device family to think it's the 
-                // desktop so that UIs based on desktop get shown.
-		        var size = DisplayInformation.GetForCurrentView().DiagonalSizeInInches;
-		        if (size.HasValue && size.Value > 6)
-		        {
-		            deviceFamily = Desktop;
-		        }
-		    }
-
-			if (deviceFamily == Mobile)
-				obj.IsActive = (val == DeviceFamily.Mobile);
-			else if (deviceFamily == Desktop)
-				obj.IsActive = (val == DeviceFamily.Desktop);
-			else if (deviceFamily == Team)
-				obj.IsActive = (val == DeviceFamily.Team);
-			else if (deviceFamily == Iot)
-				obj.IsActive = (val == DeviceFamily.IoT);
-            else if (deviceFamily == Xbox)
-                obj.IsActive = (val == DeviceFamily.Xbox);
-            else
-                obj.IsActive = (val == DeviceFamily.Unknown);
+		    obj.UpdateTrigger();
 		}
 
-		#region ITriggerValue
+	    private void UpdateTrigger()
+	    {
+	        if (deviceFamily == Mobile)
+	        {
+	            // This is where we check for continuum, because if the device family is mobile,
+	            // but screensize is greater than 6", then it means we are in continuum as the largest
+	            // screensize for a mobile device is 6"
+	            // If this is the case, then we want to force the device family to think it's the 
+	            // desktop so that UIs based on desktop get shown.
+	            var size = DisplayInformation.GetForCurrentView().DiagonalSizeInInches;
+	            if (size.HasValue && size.Value > MaximumScreenSizeForMobile)
+	            {
+	                deviceFamily = Desktop;
+	            }
+	        }
+
+	        if (deviceFamily == Mobile)
+	            IsActive = (DeviceFamily == DeviceFamily.Mobile);
+	        else if (deviceFamily == Desktop)
+	            IsActive = (DeviceFamily == DeviceFamily.Desktop);
+	        else if (deviceFamily == Team)
+	            IsActive = (DeviceFamily == DeviceFamily.Team);
+	        else if (deviceFamily == Iot)
+	            IsActive = (DeviceFamily == DeviceFamily.IoT);
+	        else if (deviceFamily == Xbox)
+	            IsActive = (DeviceFamily == DeviceFamily.Xbox);
+	        else
+	            IsActive = (DeviceFamily == DeviceFamily.Unknown);
+	    }
+
+	    #region ITriggerValue
 
 		private bool m_IsActive;
 
