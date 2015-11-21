@@ -78,7 +78,7 @@ namespace WindowsStateTriggers
 	    {
 	        if (deviceFamily == Mobile)
 	        {
-	            if (ApiInformation.IsPropertyPresent("DisplayInformation", "DiagonalSizeInInches"))
+	            if (ApiInformation.IsPropertyPresent(nameof(DisplayInformation), "DiagonalSizeInInches"))
 	            {
 	                // This is where we check for continuum, because if the device family is mobile,
 	                // but screensize is greater than 6", then it means we are in continuum as the largest
