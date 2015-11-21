@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
-using Windows.Foundation.Metadata;
+using Windows.Graphics.Display;
 using Windows.UI.Xaml;
 
 namespace WindowsStateTriggers
@@ -11,8 +11,14 @@ namespace WindowsStateTriggers
 	/// Trigger for switching between Windows and Windows Phone
 	/// </summary>
 	public class DeviceFamilyStateTrigger : StateTriggerBase, ITriggerValue
-	{
-		private static string deviceFamily;
+    {
+        private const string Desktop = "Windows.Desktop";
+        private const string Mobile = "Windows.Mobile";
+        private const string Team = "Windows.Team";
+        private const string Iot = "Windows.IoT";
+        private const string Xbox = "Windows.Xbox";
+
+        private static string deviceFamily;
 
 		static DeviceFamilyStateTrigger()
 		{
@@ -43,19 +49,34 @@ namespace WindowsStateTriggers
 			DependencyProperty.Register("DeviceFamily", typeof(DeviceFamily), typeof(DeviceFamilyStateTrigger),
 			new PropertyMetadata(DeviceFamily.Unknown, OnDeviceTypePropertyChanged));
 
-		private static void OnDeviceTypePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnDeviceTypePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			var obj = (DeviceFamilyStateTrigger)d;
 			var val = (DeviceFamily)e.NewValue;
-			if (deviceFamily == "Windows.Mobile")
+
+		    if (deviceFamily == Mobile)
+		    {
+                // This is where we check for continuum, because if the device family is mobile,
+                // but screensize is greater than 6", then it means we are in continuum as the largest
+                // screensize for a mobile device is 6"
+                // If this is the case, then we want to force the device family to think it's the 
+                // desktop so that UIs based on desktop get shown.
+		        var size = DisplayInformation.GetForCurrentView().DiagonalSizeInInches;
+		        if (size.HasValue && size.Value > 6)
+		        {
+		            deviceFamily = Desktop;
+		        }
+		    }
+
+			if (deviceFamily == Mobile)
 				obj.IsActive = (val == DeviceFamily.Mobile);
-			else if (deviceFamily == "Windows.Desktop")
+			else if (deviceFamily == Desktop)
 				obj.IsActive = (val == DeviceFamily.Desktop);
-			else if (deviceFamily == "Windows.Team")
+			else if (deviceFamily == Team)
 				obj.IsActive = (val == DeviceFamily.Team);
-			else if (deviceFamily == "Windows.IoT")
+			else if (deviceFamily == Iot)
 				obj.IsActive = (val == DeviceFamily.IoT);
-            else if (deviceFamily == "Windows.Xbox")
+            else if (deviceFamily == Xbox)
                 obj.IsActive = (val == DeviceFamily.Xbox);
             else
                 obj.IsActive = (val == DeviceFamily.Unknown);
