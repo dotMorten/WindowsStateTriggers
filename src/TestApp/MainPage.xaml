@@ -71,9 +71,13 @@
                 <local:SampleContainer Title="FullScreenModeTrigger">
                     <samples:FullScreenSample />
                 </local:SampleContainer>
-                
+
                 <local:SampleContainer Title="HostedTrigger">
                     <samples:IsHostedSample />
+                </local:SampleContainer>
+
+                <local:SampleContainer Title="InteractionCapabilityTrigger">
+                    <samples:InteractionCapabilitySample />
                 </local:SampleContainer>
             </VariableSizedWrapGrid>
 		</ScrollViewer>
