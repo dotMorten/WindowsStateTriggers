@@ -75,13 +75,21 @@ namespace WindowsStateTriggers
 				//Let's see if we can convert - for perf reasons though, try and use the right type in and out
 				if (value1.GetType() != value2.GetType() && convertType)
 				{
-					var t2 = System.Convert.ChangeType(value1, value2.GetType(), CultureInfo.InvariantCulture);
+					if (value2 is Enum)
+					{
+						value1 = Enum.ToObject(value2.GetType(), value1);
+					}
+					var t2 = Convert.ChangeType(value1, value2.GetType(), CultureInfo.InvariantCulture);
 					if (value2.Equals(t2))
 					{
 						return true;
 					}
 					//try the other way around
-					t2 = System.Convert.ChangeType(value2, value1.GetType(), CultureInfo.InvariantCulture);
+					if (value1 is Enum)
+					{
+						value2 = Enum.ToObject(value1.GetType(), value2);
+					}
+					t2 = Convert.ChangeType(value2, value1.GetType(), CultureInfo.InvariantCulture);
 					if (value1.Equals(t2))
 					{
 						return true;
