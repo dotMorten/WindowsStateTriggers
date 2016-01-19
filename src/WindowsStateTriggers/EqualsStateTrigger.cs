@@ -70,33 +70,33 @@ namespace WindowsStateTriggers
 			{
 				return true;
 			}
-			if (value1 != null && value2 != null)
+			if (value1 != null && value2 != null && value1.GetType() != value2.GetType() && convertType)
 			{
-				//Let's see if we can convert - for perf reasons though, try and use the right type in and out
-				if (value1.GetType() != value2.GetType() && convertType)
+				if (ConvertTypeEquals(value1, value2))
 				{
-					if (value2 is Enum)
-					{
-						value1 = Enum.ToObject(value2.GetType(), value1);
-					}
-					var t2 = Convert.ChangeType(value1, value2.GetType(), CultureInfo.InvariantCulture);
-					if (value2.Equals(t2))
-					{
-						return true;
-					}
-					//try the other way around
-					if (value1 is Enum)
-					{
-						value2 = Enum.ToObject(value1.GetType(), value2);
-					}
-					t2 = Convert.ChangeType(value2, value1.GetType(), CultureInfo.InvariantCulture);
-					if (value1.Equals(t2))
-					{
-						return true;
-					}
+					return true;
+				}
+				// Try the other way around:
+				if (ConvertTypeEquals(value2, value1))
+				{
+					return true;
 				}
 			}
 			return false;
+		}
+
+		private static bool ConvertTypeEquals(object value1, object value2)
+		{
+			// Let's see if we can convert:
+			if (value2 is Enum)
+			{
+				value1 = Enum.ToObject(value2.GetType(), value1);
+			}
+			else
+			{
+				value1 = Convert.ChangeType(value1, value2.GetType(), CultureInfo.InvariantCulture);
+			}
+			return value2.Equals(value1);
 		}
 
 		#region ITriggerValue
