@@ -103,6 +103,9 @@
     <Compile Include="Samples\CompositeSample.xaml.cs">
       <DependentUpon>CompositeSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\AdaptiveTrigger.xaml.cs">
+      <DependentUpon>AdaptiveTrigger.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\IsHostedSample.xaml.cs">
       <DependentUpon>IsHostedSample.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Samples\CompositeSample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\AdaptiveTrigger.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
