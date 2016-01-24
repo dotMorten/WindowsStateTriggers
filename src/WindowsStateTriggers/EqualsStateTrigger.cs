@@ -90,6 +90,10 @@ namespace WindowsStateTriggers
 			// Let's see if we can convert:
 			if (value2 is Enum)
 			{
+                // Don't let Enum.ToObject() throw an exception:
+			    if (!(value1 is int) && !(value1 is Enum))
+			        return false;
+
 				value1 = Enum.ToObject(value2.GetType(), value1);
 			}
 			else
