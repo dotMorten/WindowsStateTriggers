@@ -72,15 +72,8 @@ namespace WindowsStateTriggers
 			}
 			if (value1 != null && value2 != null && convertType)
 			{
-				if (ConvertTypeEquals(value1, value2))
-				{
-					return true;
-				}
-				// Try the other way around:
-				if (ConvertTypeEquals(value2, value1))
-				{
-					return true;
-				}
+				// Try the conversion in both ways:
+				return ConvertTypeEquals(value1, value2) || ConvertTypeEquals(value2, value1);
 			}
 			return false;
 		}
@@ -90,9 +83,9 @@ namespace WindowsStateTriggers
 			// Let's see if we can convert:
 			if (value2 is Enum)
 			{
-                // Don't let Enum.ToObject() throw an exception:
-			    if (!(value1 is int) && !(value1 is Enum))
-			        return false;
+				// Don't let Enum.ToObject() throw an exception:
+				if (!(value1 is int) && !(value1 is Enum))
+					return false;
 
 				value1 = Enum.ToObject(value2.GetType(), value1);
 			}
