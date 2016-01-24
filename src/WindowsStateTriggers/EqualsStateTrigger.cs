@@ -70,7 +70,7 @@ namespace WindowsStateTriggers
 			{
 				return true;
 			}
-			if (value1 != null && value2 != null && value1.GetType() != value2.GetType() && convertType)
+			if (value1 != null && value2 != null && convertType)
 			{
 				if (ConvertTypeEquals(value1, value2))
 				{
