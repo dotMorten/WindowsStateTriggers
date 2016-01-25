@@ -83,17 +83,25 @@ namespace WindowsStateTriggers
 			// Let's see if we can convert:
 			if (value2 is Enum)
 			{
-				// Don't let Enum.ToObject() throw an exception:
-				if (!(value1 is int) && !(value1 is Enum))
-					return false;
-
-				value1 = Enum.ToObject(value2.GetType(), value1);
+				value1 = ConvertToEnum(value2.GetType(), value1);
 			}
 			else
 			{
 				value1 = Convert.ChangeType(value1, value2.GetType(), CultureInfo.InvariantCulture);
 			}
 			return value2.Equals(value1);
+		}
+
+		private static object ConvertToEnum(Type enumType, object value)
+		{
+			try
+			{
+				return Enum.IsDefined(enumType, value) ? Enum.ToObject(enumType, value) : null;
+			}
+			catch
+			{
+				return null;
+			}
 		}
 
 		#region ITriggerValue
