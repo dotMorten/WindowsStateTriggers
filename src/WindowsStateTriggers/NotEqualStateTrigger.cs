@@ -11,7 +11,7 @@ namespace WindowsStateTriggers
     /// <summary>
     /// Enables a state if the value is not equal to another value
     /// </summary>
-    public class NotEqualStateTrigger : StateTriggerBase
+    public class NotEqualStateTrigger : StateTriggerBase, ITriggerValue
 	{
 		private void UpdateTrigger()
 		{
