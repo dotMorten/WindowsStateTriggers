@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsStateTriggers", "WindowsStateTriggers\WindowsStateTriggers.csproj", "{52D52F3C-4F64-4957-9FE8-780B7D7F75C3}"
 EndProject
@@ -47,6 +47,8 @@ Global
 		{52D52F3C-4F64-4957-9FE8-780B7D7F75C3}.Release|x86.ActiveCfg = Release|Any CPU
 		{52D52F3C-4F64-4957-9FE8-780B7D7F75C3}.Release|x86.Build.0 = Release|Any CPU
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Debug|Any CPU.Build.0 = Debug|x86
+		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Debug|ARM.ActiveCfg = Debug|ARM
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Debug|ARM.Build.0 = Debug|ARM
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -57,6 +59,8 @@ Global
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Debug|x86.Build.0 = Debug|x86
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Debug|x86.Deploy.0 = Debug|x86
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|Any CPU.ActiveCfg = Release|x86
+		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|Any CPU.Build.0 = Release|x86
+		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|Any CPU.Deploy.0 = Release|x86
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|ARM.ActiveCfg = Release|ARM
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|ARM.Build.0 = Release|ARM
 		{B4689B2B-C46B-40BF-A36B-D5D837352E8B}.Release|ARM.Deploy.0 = Release|ARM
