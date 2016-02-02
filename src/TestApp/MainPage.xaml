@@ -75,6 +75,11 @@
                 <local:SampleContainer Title="HostedTrigger">
                     <samples:IsHostedSample />
                 </local:SampleContainer>
+				
+				<local:SampleContainer Title="AdaptiveTrigger">
+					<samples:AdaptiveTriggerSample />
+				</local:SampleContainer>
+				
             </VariableSizedWrapGrid>
 		</ScrollViewer>
 	</Grid>

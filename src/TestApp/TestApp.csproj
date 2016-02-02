@@ -115,6 +115,9 @@
     <Compile Include="Samples\FullScreenSample.xaml.cs">
       <DependentUpon>FullScreenSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\AdaptiveTriggerSample.xaml.cs">
+      <DependentUpon>AdaptiveTriggerSample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\RegexSample.xaml.cs">
       <DependentUpon>RegexSample.xaml</DependentUpon>
     </Compile>
