@@ -41,7 +41,7 @@
         </Grid>
         <StackPanel x:Name="NotHostedGrid"
                     Margin="19">
-            <TextBlock Text="Here you can type some text and share it, making sure to choose this app as the share target"
+            <TextBlock Text="Type some text and share it. Choose this app as the share target"
                        Style="{StaticResource BodyTextBlockStyle}"/>
             <TextBox x:Name="ShareTextBox"/>
             <Button Content="Share"
