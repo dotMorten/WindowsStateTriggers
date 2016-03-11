@@ -28,7 +28,7 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public static readonly DependencyProperty ValueProperty =
 			DependencyProperty.Register("Value", typeof(object), typeof(IsNullOrEmptyStateTrigger),
-			new PropertyMetadata(true, OnValuePropertyChanged));
+			new PropertyMetadata(null, OnValuePropertyChanged));
 
 		private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
