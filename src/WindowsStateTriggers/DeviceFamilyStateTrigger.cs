@@ -55,6 +55,8 @@ namespace WindowsStateTriggers
 				obj.IsActive = (val == DeviceFamily.Team);
 			else if (deviceFamily == "Windows.IoT")
 				obj.IsActive = (val == DeviceFamily.IoT);
+			else if (deviceFamily == "Windows.Holographic")
+				obj.IsActive = (val == DeviceFamily.Holographic);
             else if (deviceFamily == "Windows.Xbox")
                 obj.IsActive = (val == DeviceFamily.Xbox);
             else
@@ -120,6 +122,10 @@ namespace WindowsStateTriggers
 		/// <summary>
 		/// Xbox
 		/// </summary>
-		Xbox = 5
+		Xbox = 5,
+		/// <summary>
+		/// Holographic
+		/// </summary>
+		Holographic = 6
 	}
 }
