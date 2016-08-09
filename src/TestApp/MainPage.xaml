@@ -31,6 +31,10 @@
 				<local:SampleContainer Title="IsNullOrEmptyStateTrigger">
 					<samples:IsNullOrEmptySample />
 				</local:SampleContainer>
+                
+                <local:SampleContainer Title="InverseTrigger">
+                    <samples:InverseSample />
+                </local:SampleContainer>
 
 				<local:SampleContainer Title="IsTypePresentStateTrigger">
 					<samples:IsTypePresentSample />

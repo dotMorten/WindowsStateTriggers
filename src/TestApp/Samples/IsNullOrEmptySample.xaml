@@ -13,8 +13,13 @@
 		<VisualStateManager.VisualStateGroups>
 
 			<VisualStateGroup x:Name="textboxstates">
-				<VisualState x:Name="textboxnotemptystate" />
-				<VisualState x:Name="textboxemptystate">
+                <VisualState x:Name="textboxnotemptystate">
+                    <VisualState.Setters>
+                        <Setter Target="textbox.BorderBrush"
+                                Value="Green" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="textboxemptystate">
 					<VisualState.StateTriggers>
 						<triggers:IsNullOrEmptyStateTrigger Value="{x:Bind textbox.Text, Mode=OneWay}"/>
 					</VisualState.StateTriggers>
