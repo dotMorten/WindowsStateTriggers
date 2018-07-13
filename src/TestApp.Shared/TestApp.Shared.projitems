@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6279c845-92f8-4333-ab99-3d213163593c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TestApp.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SampleContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\AdaptiveTriggerSample.xaml.cs">
+      <DependentUpon>AdaptiveTriggerSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\CompareSample.xaml.cs">
+      <DependentUpon>CompareSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\CompositeSample.xaml.cs">
+      <DependentUpon>CompositeSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\DeviceFamilySample.xaml.cs">
+      <DependentUpon>DeviceFamilySample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\EqualsSample.xaml.cs">
+      <DependentUpon>EqualsSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\FullScreenSample.xaml.cs">
+      <DependentUpon>FullScreenSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\HandPreferenceSample.xaml.cs">
+      <DependentUpon>HandPreferenceSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\IsHostedSample.xaml.cs">
+      <DependentUpon>IsHostedSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\IsNullOrEmptySample.xaml.cs">
+      <DependentUpon>IsNullOrEmptySample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\IsTrueFalseSample.xaml.cs">
+      <DependentUpon>IsTrueFalseSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\IsTypePresentSample.xaml.cs">
+      <DependentUpon>IsTypePresentSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\NetworkConnectionSample.xaml.cs">
+      <DependentUpon>NetworkConnectionSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\NotEqualSample.xaml.cs">
+      <DependentUpon>NotEqualSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\OrientationSample.xaml.cs">
+      <DependentUpon>OrientationSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\PointerDeviceTypeSample.xaml.cs">
+      <DependentUpon>PointerDeviceTypeSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\RegexSample.xaml.cs">
+      <DependentUpon>RegexSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\UserInteractionModeSample.xaml.cs">
+      <DependentUpon>UserInteractionModeSample.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\AdaptiveTriggerSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\CompareSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\CompositeSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\DeviceFamilySample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\EqualsSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\FullScreenSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\HandPreferenceSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\IsHostedSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\IsNullOrEmptySample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\IsTrueFalseSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\IsTypePresentSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\NetworkConnectionSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\NotEqualSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\OrientationSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\PointerDeviceTypeSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\RegexSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Samples\UserInteractionModeSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

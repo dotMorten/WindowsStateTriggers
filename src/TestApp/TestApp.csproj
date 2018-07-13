@@ -1,23 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.2.2</Version>
+    </PackageReference>
+  </ItemGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{B4689B2B-C46B-40BF-A36B-D5D837352E8B}</ProjectGuid>
+    <ProjectGuid>{2ED0BAA2-7751-4315-882D-B1C033456220}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestApp</RootNamespace>
     <AssemblyName>TestApp</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
-    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>TestApp_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>TestApp.Uwp_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -65,198 +92,22 @@
     <Prefer32Bit>true</Prefer32Bit>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-  </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Samples\CompositeSample.xaml.cs">
-      <DependentUpon>CompositeSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\IsHostedSample.xaml.cs">
-      <DependentUpon>IsHostedSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\IsNullOrEmptySample.xaml.cs">
-      <DependentUpon>IsNullOrEmptySample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\HandPreferenceSample.xaml.cs">
-      <DependentUpon>HandPreferenceSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\FullScreenSample.xaml.cs">
-      <DependentUpon>FullScreenSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\AdaptiveTriggerSample.xaml.cs">
-      <DependentUpon>AdaptiveTriggerSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\RegexSample.xaml.cs">
-      <DependentUpon>RegexSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\PointerDeviceTypeSample.xaml.cs">
-      <DependentUpon>PointerDeviceTypeSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\CompareSample.xaml.cs">
-      <DependentUpon>CompareSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\NotEqualSample.xaml.cs">
-      <DependentUpon>NotEqualSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\EqualsSample.xaml.cs">
-      <DependentUpon>EqualsSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\IsTrueFalseSample.xaml.cs">
-      <DependentUpon>IsTrueFalseSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\IsTypePresentSample.xaml.cs">
-      <DependentUpon>IsTypePresentSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\OrientationSample.xaml.cs">
-      <DependentUpon>OrientationSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\NetworkConnectionSample.xaml.cs">
-      <DependentUpon>NetworkConnectionSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\DeviceFamilySample.xaml.cs">
-      <DependentUpon>DeviceFamilySample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SampleContainer.cs" />
-    <Compile Include="Samples\UserInteractionModeSample.xaml.cs">
-      <DependentUpon>UserInteractionModeSample.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="TestApp_TemporaryKey.pfx" />
+    <None Include="TestApp.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\CompositeSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\IsHostedSample.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Samples\IsNullOrEmptySample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\HandPreferenceSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\FullScreenSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\AdaptiveTriggerSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\RegexSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\PointerDeviceTypeSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\CompareSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\NotEqualSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\EqualsSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\IsTrueFalseSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\IsTypePresentSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\OrientationSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\NetworkConnectionSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Samples\DeviceFamilySample.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Samples\UserInteractionModeSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WindowsStateTriggers\WindowsStateTriggers.csproj">
-      <Project>{52d52f3c-4f64-4957-9fe8-780b7d7f75c3}</Project>
-      <Name>WindowsStateTriggers</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <Import Project="..\TestApp.Shared\TestApp.Shared.projitems" Label="Shared" Condition="Exists('..\TestApp.Shared\TestApp.Shared.projitems')" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

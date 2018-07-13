@@ -1,0 +1,50 @@
+﻿<UserControl
+    x:Class="TestApp.Samples.PointerDeviceTypeSample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestApp.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:WindowsStateTriggers"
+	mc:Ignorable="d" x:Name="root">
+
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+		<VisualStateManager.VisualStateGroups>
+
+			<VisualStateGroup >
+				<VisualState x:Name="mouse">
+					<VisualState.StateTriggers>
+						<triggers:InputTypeTrigger TargetElement="{x:Bind root}" PointerType="Mouse" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="pointerStatus.Text" Value="You're using a mouse" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="touch">
+					<VisualState.StateTriggers>
+						<triggers:InputTypeTrigger TargetElement="{x:Bind root}" PointerType="Touch" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="pointerStatus.Text" Value="You're using touch" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="pan">
+					<VisualState.StateTriggers>
+						<triggers:InputTypeTrigger TargetElement="{x:Bind root}" PointerType="Pen" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="pointerStatus.Text" Value="You're using a pen" />
+					</VisualState.Setters>
+				</VisualState>
+			</VisualStateGroup>
+
+		</VisualStateManager.VisualStateGroups>
+
+		<StackPanel VerticalAlignment="Center">
+			<TextBlock x:Name="pointerStatus" Text="Click here with mouse, pen and touch" />
+
+		</StackPanel>
+
+	</Grid>
+</UserControl>

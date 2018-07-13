@@ -1,30 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-    <metadata>
-        <id>WindowsStateTriggers</id>
-        <version>1.1.0</version>
-        <title />
-        <authors>Morten Nielsen</authors>
-        <owners />
-        <licenseUrl>https://raw.githubusercontent.com/dotMorten/WindowsStateTriggers/master/LICENSE</licenseUrl>
-        <projectUrl>https://github.com/dotMorten/WindowsStateTriggers</projectUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>StateTriggers for use with the Windows 10 Visual State Manager</description>
-        <releaseNotes></releaseNotes>
-        <copyright>© Morten Nielsen 2015-2016</copyright>
-        <language>en-US</language>
-        <tags>statetrigger adaptive uwp</tags>
-    </metadata>
-    <files>
-      
-      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.dll" target="lib\uap10.0\WindowsStateTriggers.dll" />
-      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pdb" target="lib\uap10.0\WindowsStateTriggers.pdb" />
-      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pri" target="lib\uap10.0\WindowsStateTriggers.pri" />
-      <file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.xml" target="lib\uap10.0\WindowsStateTriggers.xml" />
-      <file src="WindowsStateTriggers\Properties\WindowsStateTriggers.rd.xml" target="lib\uap10.0\WindowsStateTriggers\Properties\WindowsStateTriggers.rd.xml" />
-             
-      <!-- Source -->
-      <file src="WindowsStateTriggers\**\*.cs" target="src" exclude="_ReSharper.*\**\*.*;packages\**\*.*;**\Debug\**\*.*"/>       
-      
-    </files>
+	<metadata>
+		<id>WindowsStateTriggers</id>
+		<version>1.1.0</version>
+		<title />
+		<authors>Morten Nielsen</authors>
+		<owners />
+		<licenseUrl>https://raw.githubusercontent.com/dotMorten/WindowsStateTriggers/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/dotMorten/WindowsStateTriggers</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>StateTriggers for use with the Windows 10 Visual State Manager</description>
+		<releaseNotes></releaseNotes>
+		<copyright>© Morten Nielsen 2015-2016</copyright>
+		<language>en-US</language>
+		<tags>statetrigger adaptive uwp</tags>
+		<dependencies>
+			<!-- Android -->
+			<group targetFramework="MonoAndroid">
+				<dependency id="Uno.UI" version="1.5.0-dev.1352" />
+			</group>
+
+			<!-- iOS -->
+			<group targetFramework="Xamarin.iOS10">
+				<dependency id="Uno.UI" version="1.5.0-dev.1352" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+
+		<file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.dll" target="lib\uap10.0\WindowsStateTriggers.dll" />
+		<file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pdb" target="lib\uap10.0\WindowsStateTriggers.pdb" />
+		<file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.pri" target="lib\uap10.0\WindowsStateTriggers.pri" />
+		<file src="WindowsStateTriggers\bin\Release\WindowsStateTriggers.xml" target="lib\uap10.0\WindowsStateTriggers.xml" />
+		<file src="WindowsStateTriggers\Properties\WindowsStateTriggers.rd.xml" target="lib\uap10.0\WindowsStateTriggers\Properties\WindowsStateTriggers.rd.xml" />
+
+		<file src="WindowsStateTriggers.Android\bin\Release\WindowsStateTriggers.dll" target="lib\MonoAndroid\WindowsStateTriggers.dll" />
+		<file src="WindowsStateTriggers.Android\bin\Release\WindowsStateTriggers.pdb" target="lib\MonoAndroid\WindowsStateTriggers.pdb" />
+		<file src="WindowsStateTriggers.iOS\bin\Release\WindowsStateTriggers.dll" target="lib\Xamarin.iOS10\WindowsStateTriggers.dll" />
+		<file src="WindowsStateTriggers.iOS\bin\Release\WindowsStateTriggers.pdb" target="lib\Xamarin.iOS10\WindowsStateTriggers.pdb" />
+
+		<!-- Source -->
+		<file src="WindowsStateTriggers\**\*.cs" target="src" exclude="_ReSharper.*\**\*.*;packages\**\*.*;**\Debug\**\*.*"/>
+
+	</files>
 </package>

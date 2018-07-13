@@ -1,0 +1,42 @@
+﻿<UserControl
+    x:Class="TestApp.Samples.IsTrueFalseSample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestApp.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:WindowsStateTriggers"
+	mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+		<VisualStateManager.VisualStateGroups>
+
+			<VisualStateGroup >
+				<VisualState x:Name="checkstate">
+					<VisualState.StateTriggers>
+						<StateTrigger IsActive="{x:Bind checkbox.IsChecked.Value, Mode=OneWay}"/>
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="checkStatus.Opacity" Value="1" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="uncheckstate">
+					<VisualState.StateTriggers>
+						<triggers:IsFalseStateTrigger Value="{x:Bind checkbox.IsChecked.Value, Mode=OneWay}"/>
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="uncheckStatus.Opacity" Value="1" />
+					</VisualState.Setters>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
+
+		<StackPanel VerticalAlignment="Center">
+			<TextBlock x:Name="checkStatus" Opacity=".25" Text="Checkbox is checked" HorizontalAlignment="Center"  />
+			<TextBlock x:Name="uncheckStatus" Opacity=".25" Text="Checkbox is unchecked" HorizontalAlignment="Center"  />
+			<CheckBox HorizontalAlignment="Left" Content="Check me" x:Name="checkbox" />
+		</StackPanel>
+
+	</Grid>
+</UserControl>

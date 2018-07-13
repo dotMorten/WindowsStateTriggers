@@ -25,10 +25,10 @@ namespace WindowsStateTriggers
             this.RegisterPropertyChangedCallback(MinWindowHeightProperty, OnMinWindowHeightPropertyChanged);
             this.RegisterPropertyChangedCallback(MinWindowWidthProperty, OnMinWindowWidthPropertyChanged);
             
-            var window = CoreApplication.GetCurrentView()?.CoreWindow;
+            var window = Window.Current;
             if (window != null)
             {
-                var weakEvent = new WeakEventListener<AdaptiveTrigger, CoreWindow, WindowSizeChangedEventArgs>(this)
+                var weakEvent = new WeakEventListener<AdaptiveTrigger, object, WindowSizeChangedEventArgs>(this)
                 {
                     OnEventAction = (instance, s, e) => OnCoreWindowOnSizeChanged(s, e),
                     OnDetachAction = (instance, weakEventListener) => window.SizeChanged -= weakEventListener.OnEvent
@@ -37,23 +37,23 @@ namespace WindowsStateTriggers
             }
         }
 
-        private void OnCoreWindowOnSizeChanged(CoreWindow sender, WindowSizeChangedEventArgs args)
+        private void OnCoreWindowOnSizeChanged(object sender, WindowSizeChangedEventArgs args)
         {
             IsActive = args.Size.Height >= MinWindowHeight && args.Size.Width >= MinWindowWidth;
         }
 
-        private void OnMinWindowHeightPropertyChanged(DependencyObject sender, DependencyProperty dp)
+        private void OnMinWindowHeightPropertyChanged(object sender, DependencyProperty dp)
         {
-            var window = CoreApplication.GetCurrentView()?.CoreWindow;
+            var window = Window.Current;
             if (window != null)
             {
                 IsActive = window.Bounds.Height >= MinWindowHeight;
             }
         }
 
-        private void OnMinWindowWidthPropertyChanged(DependencyObject sender, DependencyProperty dp)
+        private void OnMinWindowWidthPropertyChanged(object sender, DependencyProperty dp)
         {
-            var window = CoreApplication.GetCurrentView()?.CoreWindow;
+            var window = Window.Current;
             if (window != null)
             {
                 IsActive = window.Bounds.Width >= MinWindowWidth;

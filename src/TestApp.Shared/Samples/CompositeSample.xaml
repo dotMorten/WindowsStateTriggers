@@ -1,0 +1,52 @@
+﻿<UserControl
+    x:Class="TestApp.Samples.CompositeSample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestApp.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:WindowsStateTriggers"
+	mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+		<VisualStateManager.VisualStateGroups>
+			<VisualStateGroup >
+				<VisualState x:Name="NoneSelected">
+					<VisualState.StateTriggers>
+						<triggers:CompositeStateTrigger Operator="And">
+							<triggers:CompareStateTrigger Value="{x:Bind chb1.IsChecked.Value, Mode=OneWay}" CompareTo="False" Comparison="Equal" />
+							<triggers:CompareStateTrigger Value="{x:Bind chb2.IsChecked.Value, Mode=OneWay}" CompareTo="False" Comparison="Equal" />
+							<triggers:CompareStateTrigger Value="{x:Bind chb3.IsChecked.Value, Mode=OneWay}" CompareTo="False" Comparison="Equal" />
+						</triggers:CompositeStateTrigger>
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="selectionStatus.Text" Value="Please select only one" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="OnlyCheckOne">
+					<VisualState.StateTriggers>
+						<triggers:CompositeStateTrigger Operator="OnlyOne">
+							<triggers:CompareStateTrigger Value="{x:Bind chb1.IsChecked.Value, Mode=OneWay}" CompareTo="True" Comparison="Equal" />
+							<triggers:CompareStateTrigger Value="{x:Bind chb2.IsChecked.Value, Mode=OneWay}" CompareTo="True" Comparison="Equal" />
+							<triggers:CompareStateTrigger Value="{x:Bind chb3.IsChecked.Value, Mode=OneWay}" CompareTo="True" Comparison="Equal" />
+						</triggers:CompositeStateTrigger>
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="selectionStatus.Text" Value="Good job! Try selecting too many" />
+						<Setter Target="submitButton.IsEnabled" Value="True" />
+					</VisualState.Setters>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
+
+		<StackPanel VerticalAlignment="Center">
+			<CheckBox Content="Checkbox 1" x:Name="chb1" />
+			<CheckBox Content="Checkbox 2" x:Name="chb2" />
+			<CheckBox Content="Checkbox 3" x:Name="chb3" />
+			<TextBlock x:Name="selectionStatus" Text="You have selected too many items" />
+			<Button Content="Submit" x:Name="submitButton" IsEnabled="False" />
+		</StackPanel>
+
+	</Grid>
+</UserControl>
