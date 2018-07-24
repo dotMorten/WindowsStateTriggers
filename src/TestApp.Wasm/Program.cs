@@ -10,11 +10,11 @@ namespace TestApp.Wasm
 		private static App _app;
 
 		static void Main(string[] args)
-		{ 
+		{
 #if DEBUG
 			ConfigureFilters(LogExtensionPoint.AmbientLoggerFactory);
 #endif
-			   
+
 			Application.Start(_ => _app = new App());
 		}
 

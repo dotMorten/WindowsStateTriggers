@@ -1,3 +1,10 @@
+# Uno Platform port of WindowsStateTriggers
+This port makes the [WindowsStateTriggers](https://github.com/dotMorten/WindowsStateTriggers) app iOS, Android and WebAssembly, using [the Uno Platform](http://platform.uno).
+
+Try the WebAssembly build live at http://winstatetriggers-wasm.platform.uno
+
+The nuget package is available here: https://www.nuget.org/packages/Uno.WindowsStateTriggers
+
 # WindowsStateTriggers
 A collection of custom visual state triggers
 
