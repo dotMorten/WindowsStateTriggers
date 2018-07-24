@@ -6,7 +6,6 @@
 		<WasmHead>true</WasmHead>
 		<DefineConstants>$(DefineConstants);__WASM__</DefineConstants>
 		<NoWarn>NU1701</NoWarn>
-		<MonoWasmSDKUri>https://jenkins.mono-project.com/job/test-mono-mainline-wasm/label=ubuntu-1804-amd64/598/Azure/processDownloadRequest/598/ubuntu-1804-amd64/sdks/wasm/mono-wasm-f07691d5125.zip</MonoWasmSDKUri>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -38,8 +37,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Uno.UI" Version="1.31.0-dev.184" />
-		<PackageReference Include="Uno.Wasm.Bootstrap" Version="1.0.0-dev.38" />
+		<PackageReference Include="Uno.UI" Version="1.31.0-dev.191" />
+		<PackageReference Include="Uno.Wasm.Bootstrap" Version="1.0.0-dev.40" />
 		<PackageReference Include="Microsoft.TypeScript.Compiler" Version="2.8.3" />
 		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="2.8.3" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
