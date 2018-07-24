@@ -81,7 +81,7 @@ namespace WindowsStateTriggers
 		private void CompositeTrigger_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			OnTriggerCollectionChanged(e.OldItems == null ? null : e.OldItems.OfType<StateTriggerBase>(),
-				e.OldItems == null ? null : e.NewItems.OfType<StateTriggerBase>());
+				e.NewItems == null ? null : e.NewItems.OfType<StateTriggerBase>());
 			//TODO: handle reset
 		}
 		private void CompositeStateTrigger_VectorChanged(Windows.Foundation.Collections.IObservableVector<DependencyObject> sender, Windows.Foundation.Collections.IVectorChangedEventArgs e)
@@ -243,7 +243,7 @@ namespace WindowsStateTriggers
 			trigger.EvaluateTriggers();
 		}
 
-		#region ITriggerValue
+#region ITriggerValue
 
 		private bool m_IsActive;
 
@@ -271,7 +271,7 @@ namespace WindowsStateTriggers
 		/// </summary>
 		public event EventHandler IsActiveChanged;
 
-		#endregion ITriggerValue
+#endregion ITriggerValue
 	}
 
 	/// <summary>
