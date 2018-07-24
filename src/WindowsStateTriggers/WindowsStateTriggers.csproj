@@ -5,6 +5,7 @@
 		<PackageId>Uno.WindowsStateTriggers</PackageId>
 		<Authors>nventive</Authors>
 		<PackageProjectUrl>https://github.com/nventive/Uno.WindowsStateTriggers</PackageProjectUrl>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	
 	<ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid80' or '$(TargetFramework)' == 'xamarinios10' or '$(TargetFramework)' == 'netstandard2.0'">
