@@ -2,6 +2,9 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>uap10.0;MonoAndroid80;xamarinios10;netstandard2.0</TargetFrameworks>
+		<PackageId>Uno.WindowsStateTriggers</PackageId>
+		<Authors>nventive</Authors>
+		<PackageProjectUrl>https://github.com/nventive/Uno.WindowsStateTriggers</PackageProjectUrl>
 	</PropertyGroup>
 	
 	<ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid80' or '$(TargetFramework)' == 'xamarinios10' or '$(TargetFramework)' == 'netstandard2.0'">
