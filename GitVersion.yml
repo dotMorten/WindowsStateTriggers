@@ -4,7 +4,5 @@ next-version: 1.1.1
 branches:
   master:
     tag: dev
-  4.0-Uno:
-    tag: uno
 ignore:
   sha: []

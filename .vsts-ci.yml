@@ -37,6 +37,13 @@ phases:
       createLogFile: false
   
   - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+      ArtifactName: WindowsStateTriggers-drop
+      publishLocation: Container
+    
+  - task: PublishBuildArtifacts@1
     displayName: Publish Package Artifacts
     inputs:
       pathToPublish: .\src\TestApp.Wasm\bin\Release\netstandard2.0\dist
