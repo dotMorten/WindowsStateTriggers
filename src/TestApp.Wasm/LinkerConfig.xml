@@ -2,6 +2,8 @@
 	<assembly fullname="Uno.UI">
 		<type fullname="*" />
 	</assembly>
+	<assembly fullname="TestApp.Wasm"/>
+	<assembly fullname="WindowsStateTriggers"/>
 	<assembly fullname="System.Core">
 		<!-- This is required by JSon.NET and any expression.Compile caller -->
 		<type fullname="System.Linq.Expressions*" />

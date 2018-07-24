@@ -19,7 +19,6 @@
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseIntermediateDesignerFile>True</AndroidUseIntermediateDesignerFile>
-    <ResourcesDirectory>..\TestApp.Shared\Strings</ResourcesDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,6 +77,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WindowsStateTriggers\WindowsStateTriggers.csproj">
+      <Project>{52d52f3c-4f64-4957-9fe8-780b7d7f75c3}</Project>
+      <Name>WindowsStateTriggers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\TestApp.Shared\TestApp.Shared.projitems" Label="Shared" Condition="Exists('..\TestApp.Shared\TestApp.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

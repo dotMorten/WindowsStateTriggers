@@ -6,6 +6,7 @@
 		<WasmHead>true</WasmHead>
 		<DefineConstants>$(DefineConstants);__WASM__</DefineConstants>
 		<NoWarn>NU1701</NoWarn>
+		<MonoWasmSDKUri>https://jenkins.mono-project.com/job/test-mono-mainline-wasm/label=ubuntu-1804-amd64/598/Azure/processDownloadRequest/598/ubuntu-1804-amd64/sdks/wasm/mono-wasm-f07691d5125.zip</MonoWasmSDKUri>
 	</PropertyGroup>
 
 	<ItemGroup>
