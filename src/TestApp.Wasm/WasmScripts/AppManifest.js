@@ -1,6 +1,6 @@
 ﻿var UnoAppManifest = {
 
-    splashScreenImage: "Assets/SplashScreen.scale-200.png",
-    splashScreenColor: "#00f",
+	splashScreenImage: "Assets/SplashScreen.png",
+	splashScreenColor: "#242424",
     displayName: "Windows State Triggers Tests"
 }
