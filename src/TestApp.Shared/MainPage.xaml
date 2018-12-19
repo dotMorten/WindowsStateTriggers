@@ -6,196 +6,232 @@
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:local="using:TestApp"
 	  xmlns:samples="using:TestApp.Samples"
-	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	  mc:Ignorable="d xamarin wasm">
-	<Grid Background="DimGray">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="auto" />
-			<RowDefinition />
-		</Grid.RowDefinitions>
+	  mc:Ignorable="xamarin wasm">
 
-		<StackPanel Grid.Row="0"
-					Padding="15,15,15,15"
-					Background="White">
-			<TextBlock FontWeight="Bold"
-					   FontSize="20"
-					   TextWrapping="Wrap">
-			<Run Text="Welcome to the" />
-			<Hyperlink NavigateUri="https://platform.uno">Uno Platform </Hyperlink>
-			<Hyperlink NavigateUri="https://github.com/nventive/Uno.WindowsStateTriggers">fork</Hyperlink>
-			<Run Text="of Morten Nielsen's" />
-			<Hyperlink NavigateUri="https://github.com/dotMorten/WindowsStateTriggers">Windows State Triggers</Hyperlink>
-			<wasm:Run Text="running on" />
-			<wasm:Run Text="WebAssembly" />
-			</TextBlock>
-			<TextBlock FontStyle="Italic"
-					   TextWrapping="Wrap">
-				Note that this app is running the mono interpreted mode
-				(which is about <Hyperlink NavigateUri="https://github.com/stefan-schweiger/dotWasmBenchmark">50x slower
-				than it should be</Hyperlink>), and is for the time being best experienced in Microsoft Edge or Firefox.
-			</TextBlock>
-		</StackPanel>
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="UnoPlatformShell.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Page.Resources>
 
-		<ScrollViewer Grid.Row="1"
-					  HorizontalScrollMode="Disabled"
-					  ZoomMode="Disabled">
-			<win:VariableSizedWrapGrid Orientation="Horizontal"
+	<!-- UnoPlatformShell -->
+	<local:UnoPlatformShell AppName="WindowsStateTriggers App"
+							AppAuthor="Morten Nielsen"
+							LinkToOriginalApp="https://github.com/dotMorten/WindowsStateTriggers"
+							LinkToAppAuthor="https://github.com/dotMorten"
+							LinkToUnoPlatformApp="https://github.com/nventive/Uno.WindowsStateTriggers"
+							LinkToTwitter="https://twitter.com/?status=@UWPEverywhere:%20WindowsStateTriggers%20App%20on%20WASM%20https://github.com/nventive/Uno.WindowsStateTriggers"
+							VersionNumber="buildVersion">
+
+		<!-- About Content -->
+		<local:UnoPlatformShell.AboutContent>
+			<StackPanel>
+
+				<!-- About Content Line 1 -->
+				<TextBlock TextWrapping="Wrap"
+						   Foreground="{StaticResource Color02Brush}"
+						   FontStyle="Italic"
+						   FontSize="14">
+						
+						This application is running 
+						<Bold>
+							entirely locally
+						</Bold> 
+						on your machine, no code is being sent out to the wire.
+				</TextBlock>
+
+				<!-- About Content Line 2 -->
+				<TextBlock TextWrapping="Wrap"
+						   Foreground="{StaticResource Color02Brush}"
+						   FontStyle="Italic"
+						   FontSize="12"
+						   Margin="0,16,0,0">
+					
+						The Mono runtime is using the interpreted mode (which is currently about 
+					
+						<!-- Link to WASM Benchmark -->
+						<Hyperlink NavigateUri="https://github.com/stefan-schweiger/dotWasmBenchmark"
+								   Foreground="{StaticResource Color02Brush}">
+							<Bold>
+								<Underline>
+									50x slower than it should be
+								</Underline>
+							</Bold>
+						</Hyperlink>
+						). For a better experience run it in Microsoft Edge or Mozilla Firefox.
+				</TextBlock>
+			</StackPanel>
+		</local:UnoPlatformShell.AboutContent>
+
+		<!-- App Content -->
+		<local:UnoPlatformShell.AppContent>
+
+			<Grid Background="DimGray">
+
+				<ScrollViewer HorizontalScrollMode="Disabled"
+							  ZoomMode="Disabled">
+					<win:VariableSizedWrapGrid Orientation="Horizontal"
+											   HorizontalAlignment="Center"
+											   ItemWidth="350"
+											   Margin="5">
+
+						<local:SampleContainer Title="DeviceFamilyStateTrigger">
+							<samples:DeviceFamilySample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="NetworkConnectionStateTrigger">
+							<samples:NetworkConnectionSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="OrientationStateTrigger">
+							<samples:OrientationSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="IsTrueStateTrigger / IsFalseStateTrigger">
+							<samples:IsTrueFalseSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="IsNullOrEmptyStateTrigger">
+							<samples:IsNullOrEmptySample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="IsTypePresentStateTrigger">
+							<samples:IsTypePresentSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="EqualsStateTrigger">
+							<samples:EqualsSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="NotEqualStateTrigger">
+							<samples:NotEqualSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="CompareStateTrigger">
+							<samples:CompareSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="InputTypeTrigger">
+							<samples:PointerDeviceTypeSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="CompositeTrigger">
+							<samples:CompositeSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="RegexStateTrigger">
+							<samples:RegexSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="UserHandPreferenceStateTrigger">
+							<samples:HandPreferenceSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="UserInteractionModeTrigger">
+							<samples:UserInteractionModeSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="FullScreenModeTrigger">
+							<samples:FullScreenSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="HostedTrigger">
+							<samples:IsHostedSample />
+						</local:SampleContainer>
+
+						<local:SampleContainer Title="AdaptiveTrigger">
+							<samples:AdaptiveTriggerSample />
+						</local:SampleContainer>
+
+					</win:VariableSizedWrapGrid>
+
+					<xamarin:WrapPanel Orientation="Horizontal"
 									   ItemWidth="350"
 									   Margin="5">
 
-				<local:SampleContainer Title="DeviceFamilyStateTrigger">
-					<samples:DeviceFamilySample />
-				</local:SampleContainer>
+						<!--
+						<local:SampleContainer Title="DeviceFamilyStateTrigger">
+							<samples:DeviceFamilySample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="NetworkConnectionStateTrigger">
-					<samples:NetworkConnectionSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="NetworkConnectionStateTrigger">
+							<samples:NetworkConnectionSample />
+						</local:SampleContainer>
+						-->
 
-				<local:SampleContainer Title="OrientationStateTrigger">
-					<samples:OrientationSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="OrientationStateTrigger">
+							<samples:OrientationSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="IsTrueStateTrigger / IsFalseStateTrigger">
-					<samples:IsTrueFalseSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="IsTrueStateTrigger / IsFalseStateTrigger">
+							<samples:IsTrueFalseSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="IsNullOrEmptyStateTrigger">
-					<samples:IsNullOrEmptySample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="IsNullOrEmptyStateTrigger">
+							<samples:IsNullOrEmptySample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="IsTypePresentStateTrigger">
-					<samples:IsTypePresentSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="IsTypePresentStateTrigger">
+							<samples:IsTypePresentSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="EqualsStateTrigger">
-					<samples:EqualsSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="EqualsStateTrigger">
+							<samples:EqualsSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="NotEqualStateTrigger">
-					<samples:NotEqualSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="NotEqualStateTrigger">
+							<samples:NotEqualSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="CompareStateTrigger">
-					<samples:CompareSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="CompareStateTrigger">
+							<samples:CompareSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="InputTypeTrigger">
-					<samples:PointerDeviceTypeSample />
-				</local:SampleContainer>
+						<!--
+						<local:SampleContainer Title="InputTypeTrigger">
+							<samples:PointerDeviceTypeSample />
+						</local:SampleContainer>
+						-->
 
-				<local:SampleContainer Title="CompositeTrigger">
-					<samples:CompositeSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="CompositeTrigger">
+							<samples:CompositeSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="RegexStateTrigger">
-					<samples:RegexSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="RegexStateTrigger">
+							<samples:RegexSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="UserHandPreferenceStateTrigger">
-					<samples:HandPreferenceSample />
-				</local:SampleContainer>
+						<!--
+						<local:SampleContainer Title="UserHandPreferenceStateTrigger">
+							<samples:HandPreferenceSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="UserInteractionModeTrigger">
-					<samples:UserInteractionModeSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="UserInteractionModeTrigger">
+							<samples:UserInteractionModeSample />
+						</local:SampleContainer>
+						-->
 
-				<local:SampleContainer Title="FullScreenModeTrigger">
-					<samples:FullScreenSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="FullScreenModeTrigger">
+							<samples:FullScreenSample />
+						</local:SampleContainer>
 
-				<local:SampleContainer Title="HostedTrigger">
-					<samples:IsHostedSample />
-				</local:SampleContainer>
+						<!--
+						<local:SampleContainer Title="HostedTrigger">
+							<samples:IsHostedSample />
+						</local:SampleContainer>
+						-->
 
-				<local:SampleContainer Title="AdaptiveTrigger">
-					<samples:AdaptiveTriggerSample />
-				</local:SampleContainer>
+						<local:SampleContainer Title="AdaptiveTrigger">
+							<samples:AdaptiveTriggerSample />
+						</local:SampleContainer>
 
-			</win:VariableSizedWrapGrid>
+					</xamarin:WrapPanel>
 
-			<xamarin:WrapPanel Orientation="Horizontal"
-							   ItemWidth="350"
-							   Margin="5">
-
-				<!--
-				<local:SampleContainer Title="DeviceFamilyStateTrigger">
-					<samples:DeviceFamilySample />
-				</local:SampleContainer>
-
-				<local:SampleContainer Title="NetworkConnectionStateTrigger">
-					<samples:NetworkConnectionSample />
-				</local:SampleContainer>
-				-->
-
-				<local:SampleContainer Title="OrientationStateTrigger">
-					<samples:OrientationSample />
-				</local:SampleContainer>
-
-				<local:SampleContainer Title="IsTrueStateTrigger / IsFalseStateTrigger">
-					<samples:IsTrueFalseSample />
-				</local:SampleContainer>
-
-				<local:SampleContainer Title="IsNullOrEmptyStateTrigger">
-					<samples:IsNullOrEmptySample />
-				</local:SampleContainer>
-
-				<local:SampleContainer Title="IsTypePresentStateTrigger">
-					<samples:IsTypePresentSample />
-				</local:SampleContainer>
-
-				<local:SampleContainer Title="EqualsStateTrigger">
-					<samples:EqualsSample />
-				</local:SampleContainer>
-
-				<local:SampleContainer Title="NotEqualStateTrigger">
-					<samples:NotEqualSample />
-				</local:SampleContainer>
-
-				<local:SampleContainer Title="CompareStateTrigger">
-					<samples:CompareSample />
-				</local:SampleContainer>
-
-				<!--
-				<local:SampleContainer Title="InputTypeTrigger">
-					<samples:PointerDeviceTypeSample />
-				</local:SampleContainer>
-				-->
-
-				<local:SampleContainer Title="CompositeTrigger">
-					<samples:CompositeSample />
-				</local:SampleContainer>
-
-				<local:SampleContainer Title="RegexStateTrigger">
-					<samples:RegexSample />
-				</local:SampleContainer>
-
-				<!--
-				<local:SampleContainer Title="UserHandPreferenceStateTrigger">
-					<samples:HandPreferenceSample />
-				</local:SampleContainer>
-
-                <local:SampleContainer Title="UserInteractionModeTrigger">
-                    <samples:UserInteractionModeSample />
-                </local:SampleContainer>
-				-->
-
-				<local:SampleContainer Title="FullScreenModeTrigger">
-					<samples:FullScreenSample />
-				</local:SampleContainer>
-
-				<!--
-				<local:SampleContainer Title="HostedTrigger">
-                    <samples:IsHostedSample />
-                </local:SampleContainer>
-				-->
-
-				<local:SampleContainer Title="AdaptiveTrigger">
-					<samples:AdaptiveTriggerSample />
-				</local:SampleContainer>
-
-			</xamarin:WrapPanel>
-
-		</ScrollViewer>
-	</Grid>
+				</ScrollViewer>
+			</Grid>
+		</local:UnoPlatformShell.AppContent>
+	</local:UnoPlatformShell>
 </Page>

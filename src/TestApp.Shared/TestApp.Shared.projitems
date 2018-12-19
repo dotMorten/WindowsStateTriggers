@@ -73,6 +73,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Samples\UserInteractionModeSample.xaml.cs">
       <DependentUpon>UserInteractionModeSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)UnoPlatformShell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">
@@ -151,14 +152,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)UnoPlatformShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\GithubLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\SplashScreen.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\SplashScreen.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Square150x150Logo.scale-200.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Square44x44Logo.scale-200.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\StoreLogo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\TwitterLogo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogo_small.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
 </Project>
