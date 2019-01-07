@@ -360,27 +360,25 @@
 												   FontWeight="Bold"
 												   FontSize="24">
 					
-										Welcome to the 
-					
-										<!-- Link to Uno Fork -->
-										<Hyperlink NavigateUri="{TemplateBinding LinkToUnoPlatformApp}"
-												   Foreground="{StaticResource Color02Brush}">
-											<Underline>
-												Uno Platform Fork
-											</Underline>
-										</Hyperlink> 
-					
-										of <Run Text="{TemplateBinding AppAuthor}" />'s
-					
-										<!-- Link to Original Fork -->
-										<Hyperlink NavigateUri="{TemplateBinding LinkToOriginalApp}"
-												   Foreground="{StaticResource Color02Brush}">
-											<Underline>
-												<Run Text="{TemplateBinding AppName}" />
-											</Underline>
-										</Hyperlink> 
-					
-										running on WebAssembly
+											Welcome to the 
+											
+											<!-- Link to Original Fork -->
+											<Hyperlink NavigateUri="{TemplateBinding LinkToOriginalApp}"
+													   Foreground="{StaticResource Color02Brush}">
+												<Underline>
+													Uno Gallery
+												</Underline>
+											</Hyperlink> 
+										
+											running on 
+											
+											<!-- Link to Uno Fork -->
+											<Hyperlink NavigateUri="{TemplateBinding LinkToUnoPlatformApp}"
+													   Foreground="{StaticResource Color02Brush}">
+												<Underline>
+													WebAssembly
+												</Underline>
+											</Hyperlink> 
 										</TextBlock>
 
 										<!-- About Content -->
