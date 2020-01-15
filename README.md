@@ -1,6 +1,14 @@
 # WindowsStateTriggers
 A collection of custom visual state triggers
 
+## Sponsoring
+
+If you like this library and use it a lot, consider sponsoring me. Anything helps and encourages me to keep going.
+
+See here for details: https://github.com/sponsors/dotMorten
+
+### NuGet
+
 Get it on nuget:
 ```
    PM> Install-Package WindowsStateTriggers 
