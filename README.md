@@ -31,6 +31,7 @@ http://www.sharpgis.net/post/2015/03/24/Using-Custom-Visual-State-Triggers
 - `InputTypeTrigger`: Trigger based on the `PointerType` you're using on the `TargetElement`
 - `RegexStateTrigger`: This trigger evaluates a regular expression against a string and triggers if a match is found.
 - `CompositeStateTrigger`: This trigger combines other triggers using, And, Or or Xor to create even more powerful triggers.
+- `AdaptiveTrigger`: This trigger inherits from `AdaptiveTrigger` from Windows and adds compatibility with `CompositeStateTrigger` 
 
 Run the test app to see a set of examples of these in use.
 
