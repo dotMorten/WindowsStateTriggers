@@ -1,3 +1,10 @@
+# UPDATE: Moved to Windows Community Toolkit
+Most of these triggers has been moved to the Windows Community Toolkit and is where you'll see future enhancements happen.
+See:
+- Repo: https://github.com/windows-toolkit/WindowsCommunityToolkit
+- Docs: https://docs.microsoft.com/en-us/windows/communitytoolkit/helpers/triggers
+- Announcement: https://blogs.windows.com/windowsdeveloper/2020/06/15/announcing-windows-community-toolkit-v6-1/
+
 # WindowsStateTriggers
 A collection of custom visual state triggers
 
