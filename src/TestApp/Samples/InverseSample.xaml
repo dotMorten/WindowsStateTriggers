@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="TestApp.Samples.InverseSample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:TestApp.Samples"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:triggers="using:WindowsStateTriggers"
+             mc:Ignorable="d">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="textboxstates">
+                <VisualState x:Name="textboxnotemptystate">
+                    <VisualState.StateTriggers>
+                        <triggers:InverseTrigger>
+                            <triggers:InverseTrigger.StateTrigger>
+                                <triggers:IsNullOrEmptyStateTrigger Value="{x:Bind textbox.Text, Mode=OneWay}" />
+                            </triggers:InverseTrigger.StateTrigger>
+                        </triggers:InverseTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="textbox.BorderBrush"
+                                Value="Green" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="textboxemptystate">
+                    <VisualState.StateTriggers>
+                        <triggers:IsNullOrEmptyStateTrigger Value="{x:Bind textbox.Text, Mode=OneWay}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="textbox.Background"
+                                Value="BlanchedAlmond" />
+                        <Setter Target="textbox.BorderBrush"
+                                Value="Red" />
+                        <Setter Target="textboxError.Visibility"
+                                Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="listboxstates">
+                <VisualState x:Name="listnotemptystate">
+                    <VisualState.StateTriggers>
+                        <triggers:InverseTrigger>
+                            <triggers:InverseTrigger.StateTrigger>
+                                <triggers:IsNullOrEmptyStateTrigger Value="{x:Bind list.Items, Mode=OneWay}" />
+                            </triggers:InverseTrigger.StateTrigger>
+                        </triggers:InverseTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="list.Visibility"
+                                Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="listemptystate">
+                    <VisualState.StateTriggers>
+                        <triggers:IsNullOrEmptyStateTrigger Value="{x:Bind list.Items, Mode=OneWay}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="remove.IsEnabled"
+                                Value="False" />
+                        <Setter Target="listEmptyMessage.Visibility"
+                                Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="The TextBox will be green if not empty." />
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 20">
+                <TextBox x:Name="textbox"
+                         Text=""
+                         Width="200" />
+                <TextBlock x:Name="textboxError"
+                           Text="* Required"
+                           Foreground="Red"
+                           Margin="10 0 0 0"
+                           Visibility="Collapsed" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="add"
+                        Content="Add"
+                        Margin="0 0 10 0"
+                        Click="add_Click" />
+                <Button x:Name="remove"
+                        Content="Remove"
+                        Click="remove_Click" />
+            </StackPanel>
+            <TextBlock x:Name="listEmptyMessage"
+                       Text="List is empty, add some items"
+                       Visibility="Collapsed" />
+            <ListBox x:Name="list"
+                     HorizontalAlignment="Left"
+                     Visibility="Collapsed">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Padding"
+                                Value="3" />
+                        <Setter Property="Margin"
+                                Value="3" />
+                        <Setter Property="Background"
+                                Value="Red" />
+                        <Setter Property="Foreground"
+                                Value="White" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</UserControl>
