@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-	<style name="AppTheme" parent="Theme.AppCompat.Light">
+	<style name="AppTheme" parent="Theme.AppCompat.DayNight">
 
 		<!-- This removes the ActionBar -->
 		<item name="windowActionBar">false</item>
