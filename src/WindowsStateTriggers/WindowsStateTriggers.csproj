@@ -1,7 +1,8 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="MSBuild.Sdk.Extras">
 
 	<PropertyGroup>
-		<TargetFrameworks>uap10.0;MonoAndroid80;xamarinios10;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;xamarinios10;MonoAndroid90;monoandroid10.0;xamarinmac20;</TargetFrameworks>
+        <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.17763;</TargetFrameworks>
 		<PackageId>Uno.WindowsStateTriggers</PackageId>
 		<Authors>nventive</Authors>
 		<PackageProjectUrl>https://github.com/nventive/Uno.WindowsStateTriggers</PackageProjectUrl>
@@ -21,7 +22,7 @@
 	</PropertyGroup>
 
 	<Choose>
-		<When Condition="'$(TargetFramework)' == 'uap10.0'">
+		<When Condition="'$(TargetFramework)' == 'uap10.0.17763'">
 			<PropertyGroup>
 				<DebugType>Full</DebugType>
 				<ExtrasUwpMetaPackageVersion>6.1.4</ExtrasUwpMetaPackageVersion>
