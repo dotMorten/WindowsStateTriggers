@@ -2,20 +2,17 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;xamarinios10;MonoAndroid90;monoandroid10.0;xamarinmac20;</TargetFrameworks>
-        <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.17763;</TargetFrameworks>
+		<TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.17763;</TargetFrameworks>
 		<PackageId>Uno.WindowsStateTriggers</PackageId>
 		<Authors>nventive</Authors>
 		<PackageProjectUrl>https://github.com/nventive/Uno.WindowsStateTriggers</PackageProjectUrl>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateLibraryLayout>true</GenerateLibraryLayout>
 	</PropertyGroup>
 	
-  <ItemGroup Condition="'$(TargetFramework)'=='xamarinios10' or '$(TargetFramework)'=='MonoAndroid90' or '$(TargetFramework)'=='monoandroid10.0' or '$(TargetFramework)'=='netstandard2.0' or '$(TargetFramework)'=='xamarinmac20'">
-     <PackageReference Include="Uno.UI" Version="3.0.0-dev.692" />
+  <ItemGroup Condition="'$(TargetFramework)'!='uap10.0.17763'">
+     <PackageReference Include="Uno.UI" Version="3.0.0-dev.899" />
   </ItemGroup>
-    
-	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-		<DefineConstants>$(DefineConstants);__WASM__</DefineConstants>
-	</PropertyGroup>
 
 	<Choose>
 		<When Condition="'$(TargetFramework)' == 'uap10.0.17763'">
